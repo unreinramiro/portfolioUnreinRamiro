@@ -1,0 +1,6 @@
+@PlantillaFullstack.Server_HostAddress = http://localhost:5231
+
+GET {{PlantillaFullstack.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
