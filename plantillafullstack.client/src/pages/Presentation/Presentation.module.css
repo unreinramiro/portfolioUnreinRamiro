@@ -1,0 +1,77 @@
+
+section {
+	height: 100vh;
+	width: 100%;
+	background-color: #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+}
+
+h1 {
+	font-size: clamp(2rem, 6vw, 3rem);
+}
+
+.imageAndName {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: clamp(20px, 4vw, 50px);
+	text-align: center;
+}
+
+.fotoCv {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	object-fit: cover;
+	width: clamp(100px, 20vw, 180px);
+	height: clamp(100px, 20vw, 180px);
+	overflow: hidden;
+	border: 2px solid #fff;
+}
+
+	.fotoCv img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		object-position: unset;
+	}
+
+.containerBtns {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.btnProyContact {
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 10px;
+	width: clamp(100px, 200px, 300px);
+}
+
+.btnProy:hover{
+	background-color: #fff;
+	color: #000;
+}
+
+.btnContact {
+	background-color: #fff;
+	color: #000;
+	border: 2px solid #fff;
+	padding: 10px;
+	transition: all 0.3s ease;
+}
+
+	.btnContact:hover {
+		opacity: 0.5;
+		transform: scale(1.05);
+	}

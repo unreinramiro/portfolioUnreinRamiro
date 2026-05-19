@@ -1,19 +1,22 @@
-.header {
+.headerContainer{
+    display: flex;
     display: flex;
     align-items: center;
     background-color: #000;
     min-height: 5vh;
     position: sticky;
     border-bottom: 1px solid rgb(34, 34, 34);
+    justify-content: space-between;
+    z-index: 100;
 }
 
-    .header a {
+    .headerContainer a {
         color: #fff;
         text-align: center;
         letter-spacing: 2px;
         text-decoration: none;
         padding: 20px;
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .header a:hover {

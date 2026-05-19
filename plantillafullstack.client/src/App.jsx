@@ -6,13 +6,15 @@ import styles from './App.module.css';
 
 function App() {
     return (
-        <div className="app-container">
-            <Header />
-            <main className="main-content">
-                <AppRoutes />
-            </main>
-            <Footer />
-        </div>
+        <BrowserRouter>
+            <div className="app-container">
+                <Header />
+                <main className="main-content">
+                    <AppRoutes />
+                </main>
+                <Footer />
+            </div>
+        </BrowserRouter>
     )
 }
 
