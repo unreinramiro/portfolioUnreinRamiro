@@ -1,0 +1,24 @@
+.aboutMeContainer{
+    background-color: #0a0a0a;;
+}
+
+.content{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.content h2{
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+
+.content p{
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
