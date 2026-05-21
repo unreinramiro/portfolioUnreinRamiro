@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Desarrollo web con PHP y MySQL",
+        "institution": "Educación IT",
+        "date": "2023",
+        "certificate": "certificate.pdf"
+    },
+    {
+        "title": "ReactJs",
+        "institution": "Educación IT",
+        "date": "2024",
+        "certificate": "certificate.pdf"
+    },
+    {
+        "title": "Fundamentos de Bases de Datos - Avanzado",
+        "institution": "UTN",
+        "date": "2023",
+        "certificate": "certificate.pdf"
+    },
+    {
+        "title": "Programación en Base de Datos Oracle - Lenguaje PL-SQL",
+        "institution": "UTN",
+        "date": "2023",
+        "certificate": "certificate.pdf"
+    },
+    {
+        "title": "Introduccion a Bases de Datos y SQL",
+        "institution": "Educación IT",
+        "date": "2023",
+        "certificate": "certificate.pdf"
+    }
+]

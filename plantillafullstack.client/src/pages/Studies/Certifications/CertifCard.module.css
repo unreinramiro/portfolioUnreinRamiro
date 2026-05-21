@@ -1,0 +1,42 @@
+.certifCardContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 0.1px solid #fff;
+    padding: 20px 20px;
+    margin-top: 0;
+    height: 100%;
+    background-color: #0a0a0a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.certifCardContainer:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+h5{
+    letter-spacing: 2px;
+    font-weight: 200;
+    font-size: .9rem;
+    text-align: start;
+    margin: 0;
+    color: #fff;
+}
+
+p{
+    font-size: .8rem;
+    text-align: start;
+    margin: 0;
+    color: #fff;
+    opacity: 0.7;
+}
+
+a{
+    cursor: pointer;
+}
+
+.whiteIcon {
+    filter: invert(1);
+}

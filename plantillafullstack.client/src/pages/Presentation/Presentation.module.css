@@ -59,6 +59,11 @@ h1 {
 	width: clamp(100px, 200px, 300px);
 }
 
+.btnProy{
+	text-decoration: none;
+	cursor: pointer;
+}
+
 .btnProy:hover{
 	background-color: #fff;
 	color: #000;

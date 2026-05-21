@@ -4,7 +4,7 @@ import styles from './Presentation.module.css'
 
 const Presentation = () => {
   return (
-    <section>
+    <section id="home">
         <div className="container h-100">
             <div className="row h-100 align-items-center">
                 <div className="col-lg-12 text-center">
@@ -18,7 +18,7 @@ const Presentation = () => {
                             <b className="text-white text-opacity-50 fs-5">React JS / .NET Core / SQL Server</b>
                         </div>
                         <div className={styles.containerBtns}>
-                            <button className={`${styles.btnProyContact} ${styles.btnProy}`} >Ver proyectos</button>
+                            <a href="#proyects" className={`${styles.btnProyContact} ${styles.btnProy}`} >Ver proyectos</a>
                             <button className={`${styles.btnProyContact} ${styles.btnContact}`}>Contactar</button>
                         </div>
                     </div>

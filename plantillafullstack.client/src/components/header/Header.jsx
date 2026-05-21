@@ -5,10 +5,11 @@ function Header() {
     return (
         <div className={styles.headerContainer}>
             <div className={styles.header}>
-                <Link to="/home">RAMIRO</Link>
+                <a href="#home">RAMIRO</a>
             </div>
-            <div>
+            <div className={`${styles.hyperLinksContainer} d-flex gap-1`}>
                 <a href="#aboutMe">About Me</a>
+                <a href="#studies">Studies</a>
             </div>
         </div>
     );

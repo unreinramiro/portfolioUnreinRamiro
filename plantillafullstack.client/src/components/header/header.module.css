@@ -1,6 +1,7 @@
 .headerContainer{
     display: flex;
-    display: flex;
+    position: sticky;
+    top: 0;
     align-items: center;
     background-color: #000;
     min-height: 5vh;
@@ -22,3 +23,11 @@
     .header a:hover {
         opacity: 0.7;
     }
+
+.hyperLinksContainer a{
+    font-size: 0.9rem;
+}
+
+.hyperLinksContainer a:hover{
+    opacity: 0.7;
+}
