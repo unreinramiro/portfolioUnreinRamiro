@@ -1,0 +1,38 @@
+/* SearchBar.module.css */
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.searchInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 8px 36px 8px 0;
+    width: 100%;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+}
+
+.searchInput:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+.searchIcon {
+    position: absolute;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    color: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}

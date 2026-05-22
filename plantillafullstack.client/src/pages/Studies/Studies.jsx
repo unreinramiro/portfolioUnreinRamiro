@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './Studies.module.css'
 import CertifCard from './Certifications/CertifCard';
 import certified from '../../certifications.json'
+import AssignaturesModal from './Assignatures/AssignaturesModal';
 
 const Proyects = () => {
 
     const [certifications, setCertifications] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
       const sectionStudiesRef = useRef(null);
       const [isVisible, setIsVisible] = useState(false);
@@ -62,10 +64,11 @@ const Proyects = () => {
                         <p>Formación integral en desarrollo de software, bases de datos, redes y arquitectura de sistemas.</p>
                     </div>
                     <hr style={{height: "10px", margin: "0"}}></hr>
-                    <a>Ver Materias</a>
+                    <a onClick={() => setShowModal(true)}>Ver Materias</a>
                 </div>
             </div>
         </div>
+        {showModal && <AssignaturesModal onClose={() => setShowModal(false)}/>}
         <h4>CURSOS Y CERTIFICACIONES</h4>
         <div className='container'>
             {chunkArray(certifications, 2).map((row, rowIndex) => (

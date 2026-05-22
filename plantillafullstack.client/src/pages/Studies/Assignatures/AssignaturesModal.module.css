@@ -1,0 +1,23 @@
+.overlay {
+    position: fixed;
+    inset: 0;                /* top/right/bottom/left: 0 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.AssignaturesModal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    height: 70vh;
+    background-color: #111;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+}
