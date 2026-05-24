@@ -1,0 +1,39 @@
+.proyectCardContainer{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #fff;
+    padding: 10px;
+    height: 100%;
+}
+
+h6{
+    letter-spacing: 2px;
+    font-weight: 200;
+    color: #fff;
+    text-align: start;
+}
+
+.tagsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.detalleContainer{
+    display: flex;
+}
+
+.detalleContainer button{
+    width: 100%;
+    background-color: #111;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.detalleContainer button:hover{
+    background-color: #fff;
+    color: #111;
+}

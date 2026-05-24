@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styles from './Proyects.module.css'
+import ProyectCard from './ProyectCards/ProyectCard';
 
 const Proyects = () => {
 
@@ -24,14 +25,27 @@ const Proyects = () => {
 
   return (
     <section
-        className='d-flex flex-column gap-5 h-100'
+        className='d-flex flex-column h-100'
         id="proyects"
     >
         <div 
-            ref={sectionProyectsRef} className={`${styles.contentProyects} ${isVisibleProy ? styles.visibleProyects : ''} container px-3 text-light text-center d-flex flex-column`}>
+            ref={sectionProyectsRef} 
+            className={`${styles.contentProyects} ${isVisibleProy ? styles.visibleProyects : ''} container px-3 text-light text-center d-flex flex-column`}
+        >
             <div className='row justify-content-center'>
                 <div className='col-12 d-flex flex-column gap-3'>
-                    <h2>Proyectos</h2>
+                    <h2>PROYECTOS</h2>
+                </div>
+            </div>
+            <div className='row justify-content-center' style={{height: "500px"}}>
+                <div className='col-4 d-flex flex-column gap-3 h-100'>
+                    <ProyectCard />
+                </div>
+                <div className='col-4 d-flex flex-column gap-3 h-100'>
+                    <ProyectCard />
+                </div>
+                <div className='col-4 d-flex flex-column gap-3 h-100'>
+                    <ProyectCard />
                 </div>
             </div>
         </div>    

@@ -32,6 +32,7 @@ const Proyects = () => {
 
       const chunkArray = (arr, size) =>
         arr.reduce((acc, _, i) => i % size === 0 ? [...acc, arr.slice(i, i + size)] : acc, []);
+      
   return (
     <section
         className='d-flex flex-column gap-5 h-100'
