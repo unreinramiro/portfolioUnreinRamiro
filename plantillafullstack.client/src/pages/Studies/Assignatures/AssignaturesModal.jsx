@@ -1,9 +1,27 @@
-import React from 'react'
+import React, {useState, useEffect, use} from 'react'
 import styles from './AssignaturesModal.module.css'
 import SearchBar from '../../../components/SearchBar/SearchBar'
 import AssignatureCard from './AssignatureCard'
+import assignature from '../../../assignatures.json'
 
 const AssignaturesModal = ({ onClose }) => {
+
+    const [assignatures, setAssignatures] = useState([]);
+    const [filtered, setFiltered] = useState([]);
+
+    useEffect(() => {
+        setAssignatures(assignature);
+        setFiltered(assignature);
+    }, []);
+
+    const handleSearch = (query) => {
+        setFiltered(
+            assignatures.filter(as => 
+                as.title.toLowerCase().includes(query.toLowerCase())
+            )
+        );
+    };
+
   return (
     <div className={styles.overlay} onClick={onClose}>
         <div 
@@ -14,7 +32,7 @@ const AssignaturesModal = ({ onClose }) => {
             <div className='container d-flex flex-column gap-3'>
                 <div className='row'>
                     <div className='col-12'>
-                        <SearchBar />
+                        <SearchBar onSearch={handleSearch}/>
                     </div>
                 </div>
                 <div className='row'>
@@ -23,8 +41,8 @@ const AssignaturesModal = ({ onClose }) => {
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='col-12'>
-                        <AssignatureCard />
+                    <div className='col-12 d-flex flex-column gap-3'>
+                        {filtered.map(as => (<AssignatureCard title={as.title} status={as.status} firstNote={as.firstNote} secondNote={as.secondNote} avg={as.avg} />))}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Programacion I",
+        "status": "En curso",
+        "firstNote": "9.20",
+        "secondNote": "-",
+        "avg": ""
+    },
+    {
+        "title": "Arq de S.O",
+        "status": "En curso",
+        "firstNote": "9",
+        "secondNote": "-",
+        "avg": ""
+    },
+    {
+        "title": "Organizacion Empresarial",
+        "status": "En curso",
+        "firstNote": "9.60",
+        "secondNote": "-",
+        "avg": ""
+    },
+    {
+        "title": "Matematica",
+        "status": "En curso",
+        "firstNote": "9.20",
+        "secondNote": "-",
+        "avg": ""
+    }
+]

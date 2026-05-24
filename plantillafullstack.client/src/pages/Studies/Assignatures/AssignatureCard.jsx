@@ -1,15 +1,15 @@
 import React from 'react'
 import styles from './AssignatureCard.module.css'
 
-const AssignatureCard = () => {
+const AssignatureCard = ({title, status, firstNote, secondNote, avg}) => {
   return (
     <div className={`container ${styles.assignatureCardContainer}`}>
         <div className='row'>
             <div className='col-8'>
-                <p>Programacion I</p>
+                <p>{title}</p>
             </div>
             <div className='col-4 text-end'>
-                <b className='text-warning'>En curso</b>
+                <b className='text-warning'>{status}</b>
             </div>
         </div>
         <div className='row'>
@@ -17,7 +17,7 @@ const AssignatureCard = () => {
                 <b>Nota primer parcial: </b>
             </div>
             <div className='col-4 text-end'>
-                <b>9.20</b>
+                <b>{firstNote}</b>
             </div>
         </div>
         <div className='row'>
@@ -25,7 +25,7 @@ const AssignatureCard = () => {
                 <b>Nota segundo parcial: </b>
             </div>
             <div className='col-4 text-end'>
-                <b> - </b>
+                <b> {secondNote} </b>
             </div>
         </div>
         <div className='row'>
@@ -33,7 +33,7 @@ const AssignatureCard = () => {
                 <b>Promedio: </b>
             </div>
             <div className='col-4 text-end'>
-                <b>9.20</b>
+                <b>{avg}</b>
             </div>
         </div>
     </div>
