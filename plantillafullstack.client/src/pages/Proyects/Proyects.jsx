@@ -1,14 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styles from './Proyects.module.css'
 import ProyectCard from './ProyectCards/ProyectCard';
+import proyectos from '../../proyects.json'
 
 const Proyects = () => {
 
     const [isVisibleProy, setIsVisibleProy] = useState(false);
     const sectionProyectsRef = useRef(null);
+    const [proyects, setProyects] = useState([]);
 
     useEffect(() => {
-
+        setProyects(proyectos);
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -37,16 +39,21 @@ const Proyects = () => {
                     <h2>PROYECTOS</h2>
                 </div>
             </div>
-            <div className='row justify-content-center' style={{height: "500px"}}>
-                <div className='col-4 d-flex flex-column gap-3 h-100'>
-                    <ProyectCard />
-                </div>
-                <div className='col-4 d-flex flex-column gap-3 h-100'>
-                    <ProyectCard />
-                </div>
-                <div className='col-4 d-flex flex-column gap-3 h-100'>
-                    <ProyectCard />
-                </div>
+            <div className={`${styles.proyectsContainer} row justify-content-center g-3`}>
+                    {proyects.map((proyect, index) => (
+                        <div 
+                            className={`${styles.proyectCard} col-12 col-sm-6 col-lg-4`}
+                            key={index}
+                        >
+                                <ProyectCard
+                                    
+                                    title={proyect.title}
+                                    desc={proyect.description}
+                                    tecnologies={proyect.tecnologies}
+                                    image={proyect.img}
+                                />
+                        </div>
+                    ))}
             </div>
         </div>    
     </section>

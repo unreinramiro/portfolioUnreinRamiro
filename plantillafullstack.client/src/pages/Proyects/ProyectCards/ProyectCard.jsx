@@ -1,24 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './ProyectCard.module.css'
 import imgProy1 from '../../../assets/aritzProyect.png'
 
-const ProyectCard = () => {
+const ProyectCard = ({title, desc, tecnologies, image}) => {
+
   return (
-    <div className={styles.proyectCardContainer} id='container'>
+    <div className={styles.proyectCardContainer}>
         <div className='row'>
             <div className='col-12 d-flex flex-column gap-3 justify-content-between'>
                 <div className={styles.imageProyectContainer}>
-                    <img src={imgProy1} alt="proyect1" className='img-fluid'/>
+                    <img src={'../../../../src/assets/' +image} alt="proyect1"/>
                 </div>
-                <h6>Proyecto 1</h6>
+                <h6>{title}</h6>
                 <div className={styles.descriptionContainer}>
-                    <p>Descripcion</p>
+                    <p>{desc}</p>
                 </div>
                 <div className={styles.tagsContainer}>
-                    <span className='badge bg-transparent border border-secondary text-white-50 px-3 py-2' style={{borderRadius: "0px", fontSize: "0.75rem"}}>React</span>
-                    <span className='badge bg-transparent border border-secondary text-white-50 px-3 py-2' style={{borderRadius: "0px", fontSize: "0.75rem"}}>.NET</span>
-                    <span className='badge bg-transparent border border-secondary text-white-50 px-3 py-2' style={{borderRadius: "0px", fontSize: "0.75rem"}}>SQL Server</span>
-                    <span className='badge bg-transparent border border-secondary text-white-50 px-3 py-2' style={{borderRadius: "0px", fontSize: "0.75rem"}}>Bootstrap</span>
+                    {tecnologies.map((tecnology, index) => (
+                        <span key={index} className='badge bg-transparent border border-secondary text-white-50 px-3 py-2' style={{borderRadius: "0px", fontSize: "0.75rem"}}>
+                            {tecnology}
+                        </span>
+                    ))}
                 </div>
                 <div className={styles.detalleContainer}>
                     <button>Ver detalle</button>
