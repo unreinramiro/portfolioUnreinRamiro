@@ -3,18 +3,21 @@
         "title": "RC Computers - E-commerce",
         "description": "Este es un proyecto de desarrollo web utilizando PHP y MySQL. El proyecto consiste en la creación de una aplicación web que permite a los usuarios registrarse, iniciar sesión y gestionar su perfil. La aplicación también incluye funcionalidades para publicar contenido, interactuar con otros usuarios y administrar la base de datos.",
         "tecnologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
-        "img": "rcComputers.png"
+        "img": "rcComputers.png",
+        "gitHub": "RC-Computers-Tienda"
     },
     {
         "title": "RC Computers - Gestor de inventario",
         "description": "Es un proyecto de gestión de inventario para una tienda de computadoras.",
         "tecnologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
-        "img": "rcComputersStock.png"
+        "img": "rcComputersStock.png",
+        "gitHub": "gestorStock"
     },
     {
         "title": "Aritz Cosmetica Natural - Ecommerce",
         "description": "Este es un proyecto de desarrollo web utilizando PHP y MySQL. El proyecto consiste en la creación de una aplicación web que permite a los usuarios registrarse, iniciar sesión y gestionar su perfil. La aplicación también incluye funcionalidades para publicar contenido, interactuar con otros usuarios y administrar la base de datos.",
         "tecnologies": [".NET", "SQL Server", "ReactJs", "CSS Modules", "Axios"],
-        "img": "aritzProyect.png"
+        "img": "aritzProyect.png",
+        "gitHub": "aritzCosmetica"
     }
 ]
