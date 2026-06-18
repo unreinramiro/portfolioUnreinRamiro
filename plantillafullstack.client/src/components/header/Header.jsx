@@ -10,7 +10,7 @@ function Header() {
             <div className={`${styles.hyperLinksContainer} d-flex gap-1`}>
                 <a href="#aboutMe">About Me</a>
                 <a href="#studies">Studies</a>
-                <a href="#proyects">Proyects</a>
+                <a href="#proyects">Projects</a>
             </div>
         </div>
     );

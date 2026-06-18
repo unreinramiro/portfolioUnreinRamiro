@@ -1,0 +1,53 @@
+.overlay {
+    position: fixed;
+    inset: 0;                /* top/right/bottom/left: 0 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.ProyectDetailModal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    height: 70vh;
+    background-color: #111;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.ProyectDetailModal h3{
+    letter-spacing: 2px;
+    font-weight: 200;
+    font-size: 1.6rem;
+}
+
+.ProyectDetailModal {
+    /* tus estilos actuales */
+    overflow-y: auto;
+    scrollbar-width: thin;                        /* Firefox */
+    scrollbar-color: rgba(255,255,255,0.2) transparent; /* Firefox */
+}
+
+.ProyectDetailModal::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ProyectDetailModal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ProyectDetailModal::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.ProyectDetailModal::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}

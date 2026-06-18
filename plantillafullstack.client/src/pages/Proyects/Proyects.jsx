@@ -2,12 +2,23 @@ import React, {useState, useEffect, useRef} from 'react'
 import styles from './Proyects.module.css'
 import ProyectCard from './ProyectCards/ProyectCard';
 import proyectos from '../../proyects.json'
+import ProyectDetail from './ProyectDetail/ProyectDetail';
 
 const Proyects = () => {
 
     const [isVisibleProy, setIsVisibleProy] = useState(false);
     const sectionProyectsRef = useRef(null);
     const [proyects, setProyects] = useState([]);
+    
+    //Parte modal proyect
+    const [showModalProy, setShowModalProy] = useState(false);
+    const [selectedProy, setSelectedProy] = useState([]);
+
+    const handleShowModal = (proyect) => {
+        setShowModalProy(true);
+        setSelectedProy(proyect);
+    };
+    
 
     useEffect(() => {
         setProyects(proyectos);
@@ -30,12 +41,19 @@ const Proyects = () => {
         className='d-flex flex-column h-100'
         id="proyects"
     >
+        {
+        showModalProy && <ProyectDetail 
+                    onClose={() => setShowModalProy(false)}
+                    selectedProy = {selectedProy}
+                    />
+        }
         <div 
             ref={sectionProyectsRef} 
             className={`${styles.contentProyects} ${isVisibleProy ? styles.visibleProyects : ''} container px-3 text-light text-center d-flex flex-column`}
         >
             <div className='row justify-content-center'>
                 <div className='col-12 d-flex flex-column gap-3'>
+
                     <h2>PROYECTOS</h2>
                 </div>
             </div>
@@ -46,16 +64,13 @@ const Proyects = () => {
                             key={index}
                         >
                                 <ProyectCard
-                                    
-                                    title={proyect.title}
-                                    desc={proyect.description}
-                                    tecnologies={proyect.tecnologies}
-                                    image={proyect.img}
+                                    onShowModal={handleShowModal}
+                                    proyect={proyect}
                                 />
                         </div>
                     ))}
             </div>
-        </div>    
+        </div>
     </section>
   )
 }
