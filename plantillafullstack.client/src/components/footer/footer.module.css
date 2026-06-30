@@ -1,0 +1,18 @@
+.footerContainer{
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    min-height: 5vh;
+    border-top: 1px solid rgb(34, 34, 34);
+    justify-content: center;
+    z-index: 100;
+}
+
+    .footerContainer b {
+        color: #fff;
+        text-align: center;
+        letter-spacing: 2px;
+        text-decoration: none;
+        padding: 20px;
+        font-size: .8rem;
+    }

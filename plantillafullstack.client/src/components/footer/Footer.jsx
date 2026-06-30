@@ -3,8 +3,8 @@ import styles from './footer.module.css'
 
 const Footer = () => {
     return (
-        <div>
-            footer
+        <div className={styles.footerContainer}>
+            <b>© 2026 Ramiro Unrein. Todos los derechos reservados.</b>
         </div>
     );
 };
