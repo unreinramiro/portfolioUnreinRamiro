@@ -3,6 +3,7 @@ import Presentation from '../Presentation/Presentation';
 import AboutMe from '../AboutMe/AboutMe';
 import Studies from '../Studies/Studies';
 import Proyects from '../Proyects/Proyects';
+import Tecnologies from '../Tecnologies/Tecnologies';
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
             <AboutMe />
             <Studies />
             <Proyects />
+            <Tecnologies />
         </>
     );
 };

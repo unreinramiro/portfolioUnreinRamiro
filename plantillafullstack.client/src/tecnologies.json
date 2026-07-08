@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Frontend",
+        "tecnology": ["HTML5", "CSS3", "CSS Modules", "JavaScript", "Bootstrap5", "ReactJs"]
+    },
+    {
+        "title": "Backend",
+        "tecnology": [".NET Core", "ASP.NET", "Entity Framework", "PHP", "PL/SQL"]
+    },
+    {
+        "title": "Bases de Datos",
+        "tecnology": ["SQL Server", "MySQL", "Oracle Databases", "Stored Procedures", "Triggers", "Packages"]
+    },
+    {
+        "title": "Herramientas",
+        "tecnology": ["Git", "Postman", "Control-M", "Dynatrace", "OpenShift", "Swagger"]
+    }
+]

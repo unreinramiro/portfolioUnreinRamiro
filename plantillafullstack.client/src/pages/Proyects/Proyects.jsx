@@ -38,7 +38,7 @@ const Proyects = () => {
 
   return (
     <section
-        className='d-flex flex-column h-100'
+        className={`${styles.sectionProyects} d-flex flex-column h-100`}
         id="proyects"
     >
         {
@@ -52,8 +52,7 @@ const Proyects = () => {
             className={`${styles.contentProyects} ${isVisibleProy ? styles.visibleProyects : ''} container px-3 text-light text-center d-flex flex-column`}
         >
             <div className='row justify-content-center'>
-                <div className='col-12 d-flex flex-column gap-3'>
-
+                <div className='col-12 d-flex flex-column'>
                     <h2>PROYECTOS</h2>
                 </div>
             </div>
