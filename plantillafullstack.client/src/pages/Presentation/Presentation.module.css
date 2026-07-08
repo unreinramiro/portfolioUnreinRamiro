@@ -70,6 +70,8 @@ h1 {
 }
 
 .btnContact {
+	text-decoration: none;
+	cursor: pointer;
 	background-color: #fff;
 	color: #000;
 	border: 2px solid #fff;

@@ -19,7 +19,7 @@ const Presentation = () => {
                         </div>
                         <div className={styles.containerBtns}>
                             <a href="#proyects" className={`${styles.btnProyContact} ${styles.btnProy}`} >Ver proyectos</a>
-                            <button className={`${styles.btnProyContact} ${styles.btnContact}`}>Contactar</button>
+                            <a href="#contact" className={`${styles.btnProyContact} ${styles.btnContact}`}>Contactar</a>
                         </div>
                     </div>
                 </div>

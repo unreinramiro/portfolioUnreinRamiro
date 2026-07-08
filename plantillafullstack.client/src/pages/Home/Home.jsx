@@ -4,6 +4,7 @@ import AboutMe from '../AboutMe/AboutMe';
 import Studies from '../Studies/Studies';
 import Proyects from '../Proyects/Proyects';
 import Tecnologies from '../Tecnologies/Tecnologies';
+import Contact from '../Contact/Contact';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <Studies />
             <Proyects />
             <Tecnologies />
+            <Contact />
         </>
     );
 };
