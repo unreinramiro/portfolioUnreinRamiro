@@ -24,7 +24,7 @@ const Tecnologies = () => {
             <div className='row g-3'>
               {tecnologies.map((tecno, index) => (
                 <div 
-                  className='col-12 col-sm-6 col-lg-3'
+                  className={`${styles.cardContainer} col-12 col-sm-6 col-lg-3`}
                   key={index}
                 >
                   <TecnCard 
