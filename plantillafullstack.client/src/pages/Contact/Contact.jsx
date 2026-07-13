@@ -46,7 +46,7 @@ const Contact = () => {
 
   return (
     <section 
-        className={`${styles.sectionContact} d-flex flex-column`}
+        className={`${styles.sectionContact} d-flex flex-column min-vh-100`}
         id='contact'
         >
         <div 

@@ -38,7 +38,7 @@ const Proyects = () => {
 
   return (
     <section
-        className={`${styles.sectionProyects} d-flex flex-column`}
+        className={`${styles.sectionProyects} d-flex flex-column min-vh-100`}
         id="proyects"
     >
         {

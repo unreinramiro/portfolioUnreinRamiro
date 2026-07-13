@@ -4,7 +4,7 @@ import styles from './Presentation.module.css'
 
 const Presentation = () => {
   return (
-    <section id="home">
+    <section id="home" className={styles.presentationSection}>
         <div className="container h-100">
             <div className="row h-100 align-items-center">
                 <div className="col-lg-12 text-center">

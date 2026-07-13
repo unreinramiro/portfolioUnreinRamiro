@@ -1,5 +1,9 @@
 .aboutMeContainer{
     background-color: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+	align-items: center;
 }
 
 .content{

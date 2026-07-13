@@ -1,6 +1,9 @@
 .sectionTecnologies{
     background-color: #000;
     gap: 20px;
+    min-height: 100vh;
+    justify-content: center;
+	align-items: center;
 }
 
 .contentTecnologies{

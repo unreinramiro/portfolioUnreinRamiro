@@ -1,9 +1,16 @@
+.studiesSection{
+    background-color: #000;
+    min-height: 100vh;
+    justify-content: center;
+	align-items: center;
+    padding: 30px;
+}
+
 .content{
-    margin-top: 50px;
     gap: 20px;
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity .6s ease, transform .6s ease;
 }
 
 .visible {
@@ -11,16 +18,16 @@
     transform: translateY(0);
 }
 
-h2{
+.content h2 {
     letter-spacing: 2px;
     font-weight: 200;
-    color: #fff;
+    color: white;
 }
 
-h4{
+.certificationsSection h4 {
     letter-spacing: 2px;
     font-weight: 200;
-    color: #fff;
+    color: white;
 }
 
 .academicFormContainer{
@@ -67,4 +74,16 @@ h4{
 }
 .academicFormContainer a{
     cursor: pointer;
+}
+
+.certificationsSection {
+    padding-bottom: 60px;
+}
+
+.heroSection{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

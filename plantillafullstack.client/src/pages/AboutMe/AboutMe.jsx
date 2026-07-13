@@ -24,12 +24,12 @@ const AboutMe = () => {
   return (
     <section 
       id="aboutMe"
-      className={styles.aboutMeContainer}
+      className={`${styles.aboutMeContainer}`}
     >
         <div 
           ref={sectionRef}
-          className={`${styles.content} ${isVisible ? styles.visible : ''} container text-light text-center d-flex flex-column`}>
-          <div className='row justify-content-center'>
+          className={`${styles.content} ${isVisible ? styles.visible : ''} container text-light text-center d-flex flex-column justify-content-center`}>
+          <div className='row justify-content-center align-items-center'>
             <div className='col-8 d-flex flex-column gap-3'>
               <h2>SOBRE MI</h2>
               <p>
