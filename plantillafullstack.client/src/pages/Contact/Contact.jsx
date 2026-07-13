@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import styles from './Contact.module.css'
+import React, { useState, useEffect, useRef } from 'react';
+import styles from './Contact.module.css';
+import linkedInIcon from '../../assets/linkedin.png';
+import gitIcon from '../../assets/github.png';
 
 const Contact = () => {
+
+    const [isVisibleContact, setIsVisibleContact] = useState(false);
+    const sectionContactRef = useRef(null);
 
     const [form, setForm] = useState({
         email: '',
@@ -23,12 +28,31 @@ const Contact = () => {
         console.log(form);
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisibleContact(true);
+                    observer.disconnect(); // Solo anima una vez
+                }
+            },
+            { threshold: 0.2 }
+        );
+
+        if (sectionContactRef.current) observer.observe(sectionContactRef.current);
+        return () => observer.disconnect();
+    }, [])
+    
+
   return (
     <section 
         className={`${styles.sectionContact} d-flex flex-column`}
         id='contact'
         >
-        <div className={`${styles.contentContact} container px-3 text-light text-center d-flex flex-column gap-3`}>
+        <div 
+            className={`${styles.contentContact} ${isVisibleContact ? styles.visible : ''} container px-3 text-light text-center d-flex flex-column gap-5`}
+            ref={sectionContactRef}
+            >
             <div className='row justify-content-center gap-4'>
                 <div className='col-12 d-flex flex-column gap-3'>
                     <h2>CONTACTO</h2>
@@ -81,6 +105,36 @@ const Contact = () => {
                         </div>
                     </form>
                 </div>
+            </div>
+            <div>
+                <ul className='d-flex justify-content-evenly'>
+                    <li>
+                        <a 
+                            href='https://www.linkedin.com/in/ramirounrein/'
+                            target="_blank"
+                            className={styles.contactIcon}
+                            >
+                            <img 
+                                src={linkedInIcon}
+                                className='img-fluid bg-white p-1 rounded'
+                                style={{ width: '40px', height: '40px' }}
+                                />
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href='https://github.com/unreinramiro'
+                            target="_blank"
+                            className={styles.contactIcon}
+                            >
+                            <img 
+                                src={gitIcon}
+                                className='img-fluid bg-white p-1 rounded'
+                                style={{ width: '40px', height: '40px' }}
+                                />
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 

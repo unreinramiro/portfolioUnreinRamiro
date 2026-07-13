@@ -13,7 +13,7 @@ const Tecnologies = () => {
 
   return (
     <section 
-        className={`${styles.sectionTecnologies} d-flex flex-column h-100`}
+        className={`${styles.sectionTecnologies} d-flex flex-column`}
     >
       <div className={`${styles.contentTecnologies} container px-3 text-light text-center d-flex flex-column gap-3`}>
             <div className='row justify-content-center'>

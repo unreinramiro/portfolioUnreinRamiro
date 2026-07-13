@@ -3,8 +3,14 @@
 }
 
 .contentContact{
+    opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contentContact input,
@@ -48,4 +54,17 @@
 .contentContact button:hover{
     background-color: #fff;
     color: #111;
+}
+
+li{
+    list-style: none;
+}
+
+.contactIcon img {
+    transition: filter .2s ease, transform .2s ease;
+}
+
+.contactIcon:hover img{
+    filter: brightness(75%);
+    transform: scale(1.05);
 }
