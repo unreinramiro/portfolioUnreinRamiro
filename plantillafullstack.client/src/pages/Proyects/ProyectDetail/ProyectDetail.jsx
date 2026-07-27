@@ -21,7 +21,7 @@ const ProyectDetail = ({selectedProy, onClose}) => {
                 </div>
                 <div className='row'>
                     <a 
-                        className={`col-6 d-flex flex-column align-items-center justify-content-between ${styles.iconContainer} ${styles.githubContainer}`}
+                        className={`col-12 col-md-6 d-flex flex-column align-items-center justify-content-between ${styles.iconContainer} ${styles.githubContainer}`}
                         href={`https://github.com/unreinramiro/${selectedProy.gitHub}`}
                         target="_blank"
                         >
@@ -32,7 +32,7 @@ const ProyectDetail = ({selectedProy, onClose}) => {
                             style={{ width: '40px', height: '40px' }}
                             />
                     </a>
-                    <a className={`col-6 d-flex flex-column align-items-center ${styles.iconContainer} ${styles.prodContainer}`}>
+                    <a className={`col-12 col-md-6 d-flex flex-column align-items-center ${styles.iconContainer} ${styles.prodContainer}`}>
                         <h4 className='text-center'>Ver en Produccion</h4>
                         <img 
                             src={productionIcon} 

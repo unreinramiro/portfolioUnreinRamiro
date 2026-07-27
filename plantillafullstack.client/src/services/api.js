@@ -7,7 +7,7 @@ const api = axios.create({
     }
 });
 
-// Interceptor: Antes de enviar cualquier petición, adjunta el Token si existe
+// Interceptor: Antes de enviar cualquier peticiï¿½n, adjunta el Token si existe
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token'); // Buscamos el token guardado

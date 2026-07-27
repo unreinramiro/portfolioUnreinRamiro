@@ -24,10 +24,33 @@
         opacity: 0.7;
     }
 
+.hyperLinksContainer{
+    display: flex;
+}
+
 .hyperLinksContainer a{
     font-size: 0.9rem;
 }
 
 .hyperLinksContainer a:hover{
     opacity: 0.7;
+}
+
+.iconBurgerCss{
+    display: none;
+    filter: brightness(0) invert(1);
+    margin: 10px;
+    cursor: pointer;
+}
+
+@media(max-width: 576px){
+
+    .hyperLinksContainer{
+        display: none;
+    }
+
+    .iconBurgerCss{
+        display: block;
+    }
+    
 }

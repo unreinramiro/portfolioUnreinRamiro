@@ -1,0 +1,11 @@
+.card {
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2.6s ease, transform 2.6s ease;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

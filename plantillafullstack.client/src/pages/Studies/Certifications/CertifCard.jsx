@@ -3,7 +3,7 @@ import styles from './CertifCard.module.css'
 import certified from '../../../assets/certified.png'
 import downloadIcon from '../../../assets/downloads.png'
 
-const CertifCard = ({title, institution, date, certificate}) => {
+const CertifCard = ({title, institution, date, certificate, hours}) => {
   return (
     <div className={`w-100 h-100 ${styles.certifCardContainer}`}>
         <div className='row'>
@@ -21,12 +21,12 @@ const CertifCard = ({title, institution, date, certificate}) => {
         </div>
         <div className='row'>
             <div className='col-12'>
-                <p>{institution}</p>
+                <p className='text-start'>{institution}</p>
             </div>
         </div>
         <div className='row'>
             <div className='col-8'>
-                <p>40 horas</p>
+                <p className='text-start'>40 horas</p>
             </div>
             <div className='col-4'>
                 <p className='text-end'>{date}</p>

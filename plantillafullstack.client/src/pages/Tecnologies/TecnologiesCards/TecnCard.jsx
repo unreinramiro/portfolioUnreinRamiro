@@ -10,7 +10,7 @@ const TecnCard = ({tecs}) => {
         <div className='row'>
             <div className={`col-12 ${styles.subContainerTecnCard}`}>
             {tecs.tecnology.map((tec, index) => (
-                <p>{tec}</p>
+                <p key={index}>{tec}</p>
             ))}
             </div>
         </div>

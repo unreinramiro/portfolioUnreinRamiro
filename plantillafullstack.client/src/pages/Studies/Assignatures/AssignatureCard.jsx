@@ -6,7 +6,7 @@ const AssignatureCard = ({title, status, firstNote, secondNote, avg}) => {
     <div className={`container ${styles.assignatureCardContainer}`}>
         <div className='row'>
             <div className='col-8'>
-                <p>{title}</p>
+                <p className='text-start'>{title}</p>
             </div>
             <div className='col-4 text-end'>
                 <b className='text-warning'>{status}</b>
