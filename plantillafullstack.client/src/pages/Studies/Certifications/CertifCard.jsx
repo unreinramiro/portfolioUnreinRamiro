@@ -26,7 +26,7 @@ const CertifCard = ({title, institution, date, certificate, hours}) => {
         </div>
         <div className='row'>
             <div className='col-8'>
-                <p className='text-start'>40 horas</p>
+                <p className='text-start'>{hours} horas</p>
             </div>
             <div className='col-4'>
                 <p className='text-end'>{date}</p>

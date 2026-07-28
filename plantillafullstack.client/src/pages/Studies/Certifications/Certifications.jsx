@@ -38,13 +38,13 @@ const Certifications = () => {
                         {row.map((certification, index) => (
                             <div 
                                 className={`col-12 col-md-6 d-flex ${styles.cardAnimation}`}
-                                key={certification.std_ID}
+                                key={index}
                                 style={{ animationDelay: `${index * 0.15}s` }}>
                                 <AnimatedCard>
                                     <CertifCard
                                         title={certification.stD_TITLE}
                                         institution={certification.stD_INSTITUTION}
-                                        date={certification.stD_HOURS}
+                                        hours={certification.stD_HOURS}
                                     />
                                 </AnimatedCard>
 

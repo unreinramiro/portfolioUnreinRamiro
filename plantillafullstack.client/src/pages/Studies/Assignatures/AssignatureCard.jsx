@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './AssignatureCard.module.css'
 
-const AssignatureCard = ({title, status, firstNote, secondNote, avg}) => {
+const AssignatureCard = ({title, status, firstNote, secondNote, promotion}) => {
   return (
     <div className={`container ${styles.assignatureCardContainer}`}>
         <div className='row'>
@@ -9,7 +9,7 @@ const AssignatureCard = ({title, status, firstNote, secondNote, avg}) => {
                 <p className='text-start'>{title}</p>
             </div>
             <div className='col-4 text-end'>
-                <b className='text-warning'>{status}</b>
+                <b className={`text-${status == 'Finalizada' ? 'success' : 'warning'}`}>{status}</b>
             </div>
         </div>
         <div className='row'>
@@ -30,10 +30,10 @@ const AssignatureCard = ({title, status, firstNote, secondNote, avg}) => {
         </div>
         <div className='row'>
             <div className='col-8'>
-                <b>Promedio: </b>
+                <b>Promedio: {(firstNote+secondNote)/2}</b>
             </div>
             <div className='col-4 text-end'>
-                <b>{avg}</b>
+                <b>{promotion == 1 ? 'Promocionada' : '-'}</b>
             </div>
         </div>
     </div>
