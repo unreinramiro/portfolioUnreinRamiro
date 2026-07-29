@@ -29,8 +29,9 @@ const ProfileAdm = () => {
       }, []);
 
       const handleChange = (e) => {
+        e.preventDefault();
         const {name, value} = e.target;
-        setFormProfile({...formProfile, [e.target.name] : e.target.value})
+        setFormProfile({...formProfile, [name] : value})
       };
 
       useEffect(()=> {
@@ -59,6 +60,8 @@ const ProfileAdm = () => {
                                 type="text"
                                 className={styles.input}
                                 value={formProfile.profileName}
+                                onChange={handleChange}
+                                name="profileName"
                             />
                         </div>
 
@@ -68,6 +71,8 @@ const ProfileAdm = () => {
                                 type="text"
                                 className={styles.input}
                                 value={formProfile.profileSurname}
+                                onChange={handleChange}
+                                name="profileSurname"
                             />
                         </div>
 
@@ -77,6 +82,8 @@ const ProfileAdm = () => {
                                 className={styles.textarea}
                                 rows={6}
                                 value={formProfile.profileDesc}
+                                onChange={handleChange}
+                                name="profileDesc"
                             />
                         </div>
                         <div className={styles.buttonsContainer}>
