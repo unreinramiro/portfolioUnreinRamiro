@@ -33,28 +33,88 @@ const ProfileAdm = () => {
         setFormProfile({...formProfile, [e.target.name] : e.target.value})
       };
 
+      useEffect(()=> {
+        setFormProfile({
+            profileName : profile.prO_NAME || '',
+            profileSurname: profile.prO_SURNAME || '',
+            profileDesc: profile.prO_DESC || '',
+            profileImg: profile.prO_IMG || ''
+        })
+      }, [profile]);
+
   return (
         <div className={`container ${styles.presentationContainer}`}>
           <div className="row h-100 align-items-center">
                 <div className="col-lg-12 text-center">
+                    {editMode ? 
+
+                    <div className={styles.editModeContainer}>
+                        <label className={styles.fileButton}>
+                            Cambiar foto
+                            <input type="file" hidden />
+                        </label>
+                        <div className={styles.formGroup}>
+                            <label>Nombre</label>
+                            <input
+                                type="text"
+                                className={styles.input}
+                                value={formProfile.profileName}
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label>Apellido</label>
+                            <input
+                                type="text"
+                                className={styles.input}
+                                value={formProfile.profileSurname}
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label>Descripción</label>
+                            <textarea
+                                className={styles.textarea}
+                                rows={6}
+                                value={formProfile.profileDesc}
+                            />
+                        </div>
+                        <div className={styles.buttonsContainer}>
+                            <button
+                                className={styles.editButton}
+                            >
+                                Confirmar
+                            </button>
+
+                            <button
+                                className={`${styles.editButton} ${styles.cancelButton}`}
+                                onClick={() => setEditMode(false)}
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                    : 
+                    
                     <div className={styles.imageAndName}>
                         <div className={styles.fotoCv}>
                             <img src={`/src/assets/${profile.prO_IMG}`} />
                         </div>
                         <h1 className="text-white">{profile.prO_NAME} {profile.prO_SURNAME}</h1>
                         <div>
-                            <p className="text-white text-opacity-50 fs-5">Desarrollador Full Stack</p>
-                            <b className="text-white text-opacity-50 fs-5">React JS / .NET Core / SQL Server</b>
+                            <p className='text-white'>{profile.prO_DESC}</p>
                         </div>
                         <div>
-                          <button
+                        <button
                               className={styles.editButton}
                               onClick={() => setEditMode(true)}
                           >
-                              Editar
+                            <FaPen />
+                            Editar
                           </button>
                         </div>
                     </div>
+                    }
                 </div>
           </div>
         </div>
