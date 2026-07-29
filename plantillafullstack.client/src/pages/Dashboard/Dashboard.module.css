@@ -7,3 +7,91 @@
 	align-items: center;
 	padding: 0;
 }
+
+.dashboardContainer{
+    width: min(1400px, 95%);
+    min-height: 85vh;
+    background-color: #0a0a0a;
+    display: flex;
+    border-radius: 12px;
+}
+
+.titleContainer{
+    padding: 20%;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+h3{
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+
+.contenidoContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Seccion botones */
+
+.buttonsContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.sidebarButton{
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: #cfcfcf;
+    text-align: left;
+    font-size: .95rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .25s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebarButton:hover{
+    background: #151515;
+    color: white;
+    border-left-color: #4d8dff;
+}
+
+.active{
+    background: #151515;
+    color: white;
+    border-left: 3px solid #4d8dff;
+}
+
+.closeSessionContainer{
+    padding: 40px 0;
+}
+
+.closeSessionButton{
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: #cfcfcf;
+    text-align: left;
+    font-size: .95rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .25s ease;
+    border-left: 3px solid transparent;
+    border-left-color: #d31616;
+}
+
+.closeSessionButton:hover{
+    background: #151515;
+    color: white;
+}
+
+.activeSession{
+    background: #151515;
+    color: white;
+}
