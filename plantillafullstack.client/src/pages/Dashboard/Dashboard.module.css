@@ -1,0 +1,9 @@
+.dashboardSection {
+	min-height: 100vh;
+	width: 100%;
+	background-color: #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+}

@@ -64,19 +64,19 @@ const AssignaturesModal = ({ onClose }) => {
                     </div>
                 </div>
                 <div className='row'>
-                    {Object.entries(grouped).map(([year, semesters]) => (
+                    {Object.entries(grouped).map(([year, semesters]) => ( // Recorre el grupo anio
                     <div>
 
                         <div className='col-12 mt-4'>
                             <h4 className='text-white'>Año {year}</h4>
                         </div>
 
-                    {Object.entries(semesters).map(([semester, assignatures]) => (    
+                    {Object.entries(semesters).map(([semester, assignatures]) => (   //Recorre el grupo semestre 
                         <div 
-                            className='row mt-4' 
+                            className='row mt-4'
                             key={semester}
                         >
-                            <h6>Semestre {semester}</h6>
+                            <h6 className='text-end'>Semestre {semester}</h6>
                             <div className='col-12 d-flex flex-column gap-3'>
                                 {assignatures.map(as => (
                                     <AssignatureCard 
