@@ -7,21 +7,21 @@ namespace PlantillaFullstack.Server.Models
     public class Profile
     {
         [Key]
+        [Required]
         public int PRO_ID { get; set; }
-        [Required]
 
+        [Required]
+        [MaxLength(15)]
         public string PRO_NAME { get; set; }
+
         [Required]
         [MaxLength(15)]
-
         public string PRO_SURNAME { get; set; }
-        [Required]
-        [MaxLength(15)]
 
-        public string PRO_DESC { get; set; }
         [MaxLength(700)]
+        public string PRO_DESC { get; set; }
 
-        public string PRO_IMG { get; set; }
         [MaxLength(100)]
+        public string PRO_IMG { get; set; }
     }
 }

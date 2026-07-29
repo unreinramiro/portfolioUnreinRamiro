@@ -7,13 +7,13 @@ namespace PlantillaFullstack.Server.Models
     public class Technology
     {
         [Key]
-        public int TEC_ID { get; set; }
         [Required]
+        public int TEC_ID { get; set; }
 
-        public int TEC_TCY_ID { get; set; }
         [ForeignKey("TEC_TCY_ID")]
+        public int TEC_TCY_ID { get; set; }
 
-        public string TEC_NAME { get; set; }
         [MaxLength(30)]
+        public string TEC_NAME { get; set; }
     }
 }

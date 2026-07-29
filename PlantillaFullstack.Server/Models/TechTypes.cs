@@ -7,10 +7,10 @@ namespace PlantillaFullstack.Server.Models
     public class TechTypes
     {
         [Key]
-        public int TCY_ID { get; set; }
         [Required]
+        public int TCY_ID { get; set; }
 
-        public string TCY_NAME { get; set; }
         [MaxLength(30)]
+        public string TCY_NAME { get; set; }
     }
 }

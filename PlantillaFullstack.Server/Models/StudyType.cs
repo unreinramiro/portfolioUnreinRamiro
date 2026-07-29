@@ -7,10 +7,10 @@ namespace PlantillaFullstack.Server.Models
     public class StudyType
     {
         [Key]
-        public int STY_ID { get; set; }
         [Required]
+        public int STY_ID { get; set; }
 
-        public string STY_NAME { get; set; }
         [MaxLength(15)]
+        public string STY_NAME { get; set; }
     }
 }
