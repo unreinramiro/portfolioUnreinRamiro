@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlantillaFullstack.Server.Models;
 using PlantillaFullstack.Server.Data;
+using PlantillaFullstack.Server.DTOs;
 
 namespace PlantillaFullstack.Server.Controllers
 {
@@ -20,6 +22,62 @@ namespace PlantillaFullstack.Server.Controllers
         {
             var profiles = _context.Profile.FirstOrDefault();
             return Ok(profiles);
+        }
+
+        [HttpPut("updProfile")]
+        public async Task<IActionResult> UpdProfile([FromBody] ProfileData dtoPd)
+        {
+            try
+            {
+                if (dtoPd == null)
+                    return BadRequest("Datos inválidos");
+
+                var profile = await _context.Profile.FirstOrDefaultAsync();
+
+                if (profile == null)
+                    return NotFound("Perfil no encontrado");
+
+                bool updated = false;
+
+                if(profile.PRO_NAME != dtoPd.ProfileName)
+                {
+                    profile.PRO_NAME = dtoPd.ProfileName;
+                    updated = true;
+                }
+
+                if(profile.PRO_SURNAME != dtoPd.ProfileSurname)
+                {
+                    profile.PRO_SURNAME = dtoPd.ProfileSurname;
+                    updated = true;
+                }
+
+                if(profile.PRO_DESC != dtoPd.ProfileDesc)
+                {
+                    profile.PRO_DESC = dtoPd.ProfileDesc;
+                    updated = true;
+                }
+
+                if(profile.PRO_IMG != dtoPd.ProfileImg)
+                {
+                    profile.PRO_IMG = dtoPd.ProfileImg;
+                    updated = true;
+                }
+
+                if (updated)
+                {
+                    await _context.SaveChangesAsync();
+                    return Ok(new { Message = "Datos actualizados correctamente." });
+                }
+                else
+                {
+                    return Ok(new { Message = "No hubo cambios en los datos." });
+                }
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Error al actualizar el perfil: {ex.Message}");
+            }
+
         }
     }
 }
