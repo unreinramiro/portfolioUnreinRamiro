@@ -43,6 +43,16 @@ const ProfileAdm = () => {
         })
       }, [profile]);
 
+      
+    const handleUpdProfile = async () => {
+        try {
+            const response = await axiosInstance.put('profile/updProfile', formProfile);
+            console.log("Perfil actualizado:", response.data);
+        } catch (err) {
+            console.error("Error al actualizar el profile", err);
+        }
+    }
+
   return (
         <div className={`container ${styles.presentationContainer}`}>
           <div className="row h-100 align-items-center">
@@ -89,6 +99,7 @@ const ProfileAdm = () => {
                         <div className={styles.buttonsContainer}>
                             <button
                                 className={styles.editButton}
+                                onClick={handleUpdProfile}
                             >
                                 Confirmar
                             </button>
