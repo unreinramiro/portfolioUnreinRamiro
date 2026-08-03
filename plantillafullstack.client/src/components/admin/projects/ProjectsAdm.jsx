@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './ProjectsAdm.module.css'
 import axiosInstance from '../../../services/api'
+import ProjectCard from '../../../pages/Proyects/ProyectCards/ProyectCard'
 
 const ProjectsAdm = () => {
 
@@ -24,7 +25,12 @@ const ProjectsAdm = () => {
     <div className={`container`}>
       <div className="row h-100 align-items-center">
          <div className="col-lg-12 text-center">
-
+          {projects.map((proyect, index) => (
+            <ProjectCard 
+              key={index}
+              proyect={proyect}
+            />
+          ))}
          </div>
       </div>
     </div>

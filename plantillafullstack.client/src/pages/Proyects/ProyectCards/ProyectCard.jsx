@@ -15,13 +15,13 @@ const ProyectCard = ({onShowModal, proyect}) => {
                 <div className={styles.descriptionContainer}>
                     <p>{proyect.desc}</p>
                 </div>
-                <div className={styles.tagsContainer}>
+                {/* <div className={styles.tagsContainer}>
                     {proyect.tecnologies.map((tecnology, index) => (
                         <span key={index} className='badge bg-transparent border border-secondary text-white-50 px-3 py-2' style={{borderRadius: "0px", fontSize: "0.75rem"}}>
                             {tecnology}
                         </span>
                     ))}
-                </div>
+                </div> */}
                 <div className={styles.detalleContainer}>
                     <button onClick={() => onShowModal(proyect)}>Ver detalle</button>
                 </div>
