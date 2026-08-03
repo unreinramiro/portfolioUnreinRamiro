@@ -15,17 +15,17 @@ const ProfileAdm = () => {
       });
       const [editMode, setEditMode] = useState(false);
 
-      useEffect(() => {
-          const fetchProfile = async () => {
-              try {
-                  const response = await axiosInstance.get('profile'); // Realiza una solicitud GET a /api/products
-                  setProfile(response.data); // Actualiza el estado con los datos obtenidos
-                  console.log('Profile obtenido:', response.data);
-              } catch (err) {
-                  console.error("Error al obtener el profile", err); // Muestra el error en consola
-              }
-          };
+      const fetchProfile = async () => {
+          try {
+              const response = await axiosInstance.get('profile'); // Realiza una solicitud GET a /api/products
+              setProfile(response.data); // Actualiza el estado con los datos obtenidos
+              console.log('Profile obtenido:', response.data);
+          } catch (err) {
+              console.error("Error al obtener el profile", err); // Muestra el error en consola
+          }
+      };
 
+      useEffect(() => {
           fetchProfile();
       }, []);
 
@@ -47,8 +47,22 @@ const ProfileAdm = () => {
       
     const handleUpdProfile = async () => {
         try {
-            const response = await axiosInstance.put('profile/updProfile', formProfile);
+            const formData = new FormData();
+            formData.append('ProfileName', formProfile.profileName);
+            formData.append('ProfileSurname', formProfile.profileSurname);
+            formData.append('ProfileDesc', formProfile.profileDesc);
+            
+            if (formProfile.profileImg) {
+                formData.append('ProfileImg', formProfile.profileImg);
+            }
+
+            const response = await axiosInstance.put('profile/updProfile', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
             alertSuccess('¡Perfil actualizado!', 'Los cambios se guardaron correctamente');
+            fetchProfile();
         } catch (err) {
             alertError('Error', 'No se pudo actualizar el perfil');
         }
@@ -63,7 +77,14 @@ const ProfileAdm = () => {
                     <div className={styles.editModeContainer}>
                         <label className={styles.fileButton}>
                             Cambiar foto
-                            <input type="file" hidden />
+                            <input 
+                                type="file" 
+                                hidden
+                                accept='image/*'
+                                onChange={(e) => setFormProfile({
+                                    ...formProfile,
+                                    profileImg: e.target.files[0]
+                                })} />
                         </label>
                         <div className={styles.formGroup}>
                             <label>Nombre</label>
@@ -117,7 +138,7 @@ const ProfileAdm = () => {
                     
                     <div className={styles.imageAndName}>
                         <div className={styles.fotoCv}>
-                            <img src={`/src/assets/${profile.prO_IMG}`} />
+                            <img src={`http://localhost:5231/images/${profile.prO_IMG}`} />
                         </div>
                         <h1 className="text-white">{profile.prO_NAME} {profile.prO_SURNAME}</h1>
                         <div>
