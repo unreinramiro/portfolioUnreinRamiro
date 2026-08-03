@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './ProfileAdm.module.css'
 import axiosInstance from '../../../services/api'
 import { FaPen } from "react-icons/fa";
+import { alertSuccess, alertError, alertConfirm, alertToast } from '../../../utils/alerts'
 
 const ProfileAdm = () => {
 
@@ -47,9 +48,9 @@ const ProfileAdm = () => {
     const handleUpdProfile = async () => {
         try {
             const response = await axiosInstance.put('profile/updProfile', formProfile);
-            console.log("Perfil actualizado:", response.data);
+            alertSuccess('¡Perfil actualizado!', 'Los cambios se guardaron correctamente');
         } catch (err) {
-            console.error("Error al actualizar el profile", err);
+            alertError('Error', 'No se pudo actualizar el perfil');
         }
     }
 

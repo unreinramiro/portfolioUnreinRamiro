@@ -5,6 +5,7 @@ import ProjectsAdm from '../../components/admin/projects/ProjectsAdm'
 import StudiesAdm from '../../components/admin/studies/StudiesAdm'
 import AssignaturesAdm from '../../components/admin/assignatures/AssignaturesAdm'
 import TechAdm from '../../components/admin/technologies/TechAdm'
+import { alertSuccess, alertError, alertConfirm, alertToast } from '../../utils/alerts'
 
 const Dashboard = () => {
 
