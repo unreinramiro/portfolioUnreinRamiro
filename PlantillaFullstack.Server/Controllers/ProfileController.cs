@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PlantillaFullstack.Server.Models;
 using PlantillaFullstack.Server.Data;
 using PlantillaFullstack.Server.DTOs;
@@ -25,7 +26,7 @@ namespace PlantillaFullstack.Server.Controllers
         }
 
         [HttpPut("updProfile")]
-        public async Task<IActionResult> UpdProfile([FromBody] ProfileData dtoPd)
+        public async Task<IActionResult> UpdProfile([FromForm] ProfileData dtoPd)
         {
             try
             {
@@ -38,8 +39,23 @@ namespace PlantillaFullstack.Server.Controllers
                     return NotFound("Perfil no encontrado");
 
                 bool updated = false;
+                string currentDir = Directory.GetCurrentDirectory();
 
-                if(profile.PRO_NAME != dtoPd.ProfileName)
+                if (dtoPd.ProfileImg != null)
+                {
+                    string fileName = $"updProfileImg_{Guid.NewGuid()}{Path.GetExtension(dtoPd.ProfileImg.FileName)}";
+                    string filePath = Path.Combine(currentDir, "wwwroot", "images", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await dtoPd.ProfileImg.CopyToAsync(stream);
+                    }
+
+                    profile.PRO_IMG = fileName;
+                    updated = true;
+                }
+
+                if (profile.PRO_NAME != dtoPd.ProfileName)
                 {
                     profile.PRO_NAME = dtoPd.ProfileName;
                     updated = true;
@@ -54,12 +70,6 @@ namespace PlantillaFullstack.Server.Controllers
                 if(profile.PRO_DESC != dtoPd.ProfileDesc)
                 {
                     profile.PRO_DESC = dtoPd.ProfileDesc;
-                    updated = true;
-                }
-
-                if(profile.PRO_IMG != dtoPd.ProfileImg)
-                {
-                    profile.PRO_IMG = dtoPd.ProfileImg;
                     updated = true;
                 }
 
