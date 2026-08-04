@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './ProyectCard.module.css'
 import imgProy1 from '../../../assets/aritzProyect.png'
 
-const ProyectCard = ({onShowModal, proyect}) => {
+const ProyectCard = ({onShowModal, proyect, textButton}) => {
     console.log(proyect);
   return (
     <div className={styles.proyectCardContainer}>
@@ -23,7 +23,7 @@ const ProyectCard = ({onShowModal, proyect}) => {
                     ))}
                 </div> */}
                 <div className={styles.detalleContainer}>
-                    <button onClick={() => onShowModal(proyect)}>Ver detalle</button>
+                    <button onClick={() => onShowModal(proyect)}>{textButton}</button>
                 </div>
             </div>
         </div>

@@ -65,6 +65,7 @@ const Proyects = () => {
                                 <ProyectCard
                                     onShowModal={handleShowModal}
                                     proyect={proyect}
+                                    textButton={"Ver detalle"}
                                 />
                         </div>
                     ))}

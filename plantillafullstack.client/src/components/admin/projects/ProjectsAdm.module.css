@@ -1,0 +1,70 @@
+.projectsContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0.5rem;
+    scroll-behavior: smooth;
+}
+
+/* Opcional: ocultar la scrollbar visualmente */
+.projectsContainer::-webkit-scrollbar{
+    height: 6px;
+}
+.projectsContainer::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.projectItem{
+    flex: 0 0 auto;
+    width: 250px;
+    text-align: center;
+}
+
+.carouselWrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.arrowButton{
+    background: transparent;
+    border: 1px solid rgb(60, 60, 60);
+    color: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all .3s ease;
+}
+
+.arrowButton:hover{
+    background-color: #1a1a1a;
+    border-color: #fff;
+}
+
+.addButton{
+    padding: 10px 30px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 8px;
+    letter-spacing: 2px;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: all .3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.addButton:hover{
+    background-color: #1a1a1a;
+    border-color: #fff;
+    box-shadow: 0 0 12px rgba(255,255,255,.12);
+}
