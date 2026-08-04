@@ -3,15 +3,15 @@ import styles from './ProyectCard.module.css'
 import imgProy1 from '../../../assets/aritzProyect.png'
 
 const ProyectCard = ({onShowModal, proyect}) => {
-
+    console.log(proyect);
   return (
     <div className={styles.proyectCardContainer}>
         <div className='row'>
             <div className='col-12 d-flex flex-column gap-3 justify-content-between'>
                 <div className={styles.imageProyectContainer}>
-                    <img src={'../../../../src/assets/' + proyect.img} alt="proyect1"/>
+                    <img src={'../../../../src/assets/' + proyect.prO_IMG_1} alt="proyect1"/>
                 </div>
-                <h6>{proyect.title}</h6>
+                <h6 className='text-white'>{proyect.prO_TITLE}</h6>
                 <div className={styles.descriptionContainer}>
                     <p>{proyect.desc}</p>
                 </div>
