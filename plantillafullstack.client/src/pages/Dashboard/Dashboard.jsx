@@ -15,12 +15,12 @@ const Dashboard = () => {
   return (
     <section className={styles.dashboardSection}>
         <div className={`container ${styles.dashboardContainer}`}>
-            <div className='row w-100'>
-                <div className='col-3'>
+            <div className='row flex-column flex-lg-row w-100 g-0'>
+                <div className='col-12 col-lg-3'>
                     <div className={`row ${styles.titleContainer}`}>
                         <h3 className='text-white text-center'>Dashboard</h3>
                     </div>
-                    <div className={`row ${styles.buttonsContainer}`}>
+                    <div className={`d-flex flex-row flex-lg-column ${styles.buttonsContainer}`}>
                         <button 
                             onClick={() => setActiveTab("Profile")}
                             className={`${styles.sidebarButton} ${
@@ -52,7 +52,7 @@ const Dashboard = () => {
                         >Cerrar sesion</button>
                     </div>
                 </div>
-                <div className={`col-9 ${styles.contenidoContainer}`}>
+                <div className={`col-12 col-lg-9 ${styles.contenidoContainer}`}>
                     <div className={`row p-3`}>
                         <h3 className='text-white text-center'>{activeTab}</h3>
                     </div>
