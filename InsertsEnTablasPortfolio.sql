@@ -66,6 +66,11 @@ VALUES
 (3, 1, 'Matematica', 'Finalizada', 9.33, 9.00, 1, 1, 1),
 (4, 1, 'Org. Empresarial', 'Finalizada', 9.50, 8.80, 1, 1, 1);
 
+INSERT INTO PROJECTS
+(PRO_ID, PRO_TITLE, PRO_IMG_1, PRO_IMG_2, PRO_IMG_3, PRO_IMG_4, PRO_DESCRIPTION, PRO_GITHUB_URL, PRO_PRODUCTION_URL)
+VALUES
+(4, 'Aritz Cosmetica Natural - Ecommerce', 'aritzProyect.png', null, null, null, 'Este es un proyecto de desarrollo web utilizando React y .NET con bases de datos en SQL Server. El proyecto consiste en la creación de una aplicación web que permite a los usuarios registrarse, iniciar sesión y gestionar su perfil. La aplicación también incluye funcionalidades para publicar contenido, interactuar con otros usuarios y administrar la base de datos.', 'https://github.com/unreinramiro/aritzCosmetica', 'https://www.aritz.com.ar/');
+
 SELECT COLUMN_NAME 
 FROM INFORMATION_SCHEMA.COLUMNS 
 WHERE TABLE_NAME = 'STUDIES' 

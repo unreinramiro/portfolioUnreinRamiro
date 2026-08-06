@@ -10,10 +10,14 @@ namespace PlantillaFullstack.Server.Models
         [Required]
         public int PRT_ID { get; set; }
 
-        [ForeignKey("PRT_PRO_ID")]
         public int PRT_PRO_ID { get; set; }
 
-        [ForeignKey("PRT_TEC_ID")]
         public int PRT_TEC_ID { get; set; }
+
+        [ForeignKey("PRT_TEC_ID")]
+        public Technology Technology { get; set; }
+
+        [ForeignKey("PRT_PRO_ID")]
+        public Project Project { get; set; }
     }
 }

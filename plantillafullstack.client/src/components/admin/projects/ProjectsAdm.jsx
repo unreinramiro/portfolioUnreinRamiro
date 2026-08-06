@@ -38,8 +38,9 @@ const ProjectsAdm = () => {
     }
   };
 
-  const handleEditProject = (proyect) => {
-    setEditingProject(proyect);
+  const handleEditProject = async (proyect) => {
+    const res = await axiosInstance.get(`technologies/${proyect.prO_ID}`);
+    setEditingProject({...proyect, technologies: res.data});
   };
 
   return (

@@ -2,23 +2,23 @@ import React, { useState } from 'react'
 import styles from './ProjectEditModal.module.css'
 
 const ProjectEditModal = ({ project, onClose, onSave }) => {
-
+    console.log(project);
     const [form, setForm] = useState({
-        proTitle: project.proTitle,
-        proDescription: project.proDescription,
-        proGithubUrl: project.proGithubUrl,
-        proProductionUrl: project.proProductionUrl,
+        proTitle: project.prO_TITLE,
+        proDescription: project.prO_DESCRIPTION,
+        proGithubUrl: project.prO_GITHUB_URL,
+        proProductionUrl: project.prO_PRODUCTION_URL,
     });
 
     const [images, setImages] = useState({
-        proImg1: project.proImg1,
-        proImg2: project.proImg2,
-        proImg3: project.proImg3,
-        proImg4: project.proImg4,
+        proImg1: project.prO_IMG_1,
+        proImg2: project.prO_IMG_2,
+        proImg3: project.prO_IMG_3,
+        proImg4: project.prO_IMG_4,
     });
 
     const [technologies, setTechnologies] = useState(
-        project.technologies?.map(t => t.techName).join(', ') || ''
+        project.technologies?.map(t => t.teC_NAME).join(', ') || ''
     );
 
     const handleChange = (e) => {
@@ -51,7 +51,7 @@ const ProjectEditModal = ({ project, onClose, onSave }) => {
                             <div className='col-3' key={key}>
                                 <label htmlFor={key} className={styles.imageSlot}>
                                     {images[key]
-                                        ? <img src={images[key]} alt={`img${i + 1}`} />
+                                        ? <img src={'../../../../src/assets/' + images[key]} alt={`img${i + 1}`} />
                                         : <span>+</span>}
                                 </label>
                                 <input
