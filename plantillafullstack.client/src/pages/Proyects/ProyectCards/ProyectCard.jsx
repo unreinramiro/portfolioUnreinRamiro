@@ -3,7 +3,7 @@ import styles from './ProyectCard.module.css'
 import imgProy1 from '../../../assets/aritzProyect.png'
 
 const ProyectCard = ({onShowModal, proyect, textButton}) => {
-    console.log(proyect);
+
   return (
     <div className={styles.proyectCardContainer}>
         <div className='row'>
@@ -13,7 +13,7 @@ const ProyectCard = ({onShowModal, proyect, textButton}) => {
                 </div>
                 <h6 className='text-white'>{proyect.prO_TITLE}</h6>
                 <div className={styles.descriptionContainer}>
-                    <p>{proyect.desc}</p>
+                    <p>{proyect.pRO_DESCRIPTION}</p>
                 </div>
                 {/* <div className={styles.tagsContainer}>
                     {proyect.tecnologies.map((tecnology, index) => (

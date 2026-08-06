@@ -4,12 +4,15 @@ import axiosInstance from '../../../services/api'
 import ProjectCard from '../../../pages/Proyects/ProyectCards/ProyectCard'
 import SearchBar from '../../SearchBar/SearchBar'
 import { FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import ProjectEditModal from './editModal/ProjectEditModal'
 
 
 const ProjectsAdm = () => {
 
   const [projects, setProjects] = useState([]);
   const scrollRef = useRef(null);
+  const [editingProject, setEditingProject] = useState(null);
+  const [showModalProy, setShowModalProy] = useState(false);
 
   const fetchProjects = async () => {
     try{
@@ -35,13 +38,17 @@ const ProjectsAdm = () => {
     }
   };
 
+  const handleEditProject = (proyect) => {
+    setEditingProject(proyect);
+  };
+
   return (
     <div className={`container`}>
-        <div className='row p-4'>
-          <div className='col d-flex justify-content-center'>
+        <div className='row p-4 g-4'>
+          <div className='col-lg-9 col-sm-12 d-flex justify-content-center'>
             <SearchBar />
           </div>
-          <div className='col-3 d-flex justify-content-center'>
+          <div className='col-lg-3 col-sm-12 d-flex justify-content-center'>
             <button className={styles.addButton}>
               <FaPlus />Agregar</button>
           </div>
@@ -61,8 +68,9 @@ const ProjectsAdm = () => {
                 key={index} 
                 className={styles.projectItem}>
                 <ProjectCard 
+                  onShowModal={handleEditProject}
                   proyect={proyect}
-                  textButton={"Editar"} />
+                  textButton={"Editar"}/>
               </div>
             ))}
           </div>
@@ -73,6 +81,13 @@ const ProjectsAdm = () => {
             <FaChevronRight />
           </button>
         </div>
+        {editingProject && (
+            <ProjectEditModal
+                project={editingProject}
+                onClose={() => setEditingProject(null)}
+                onSave={(data) => { /* tu llamada a axiosInstance acá */ }}
+            />
+        )}
     </div>
   )
 }
