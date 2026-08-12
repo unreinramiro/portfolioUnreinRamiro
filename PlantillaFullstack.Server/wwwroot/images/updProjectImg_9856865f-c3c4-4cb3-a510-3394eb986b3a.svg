@@ -1,0 +1,61 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Textura tipo papel kraft -->
+    <filter id="kraftTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise" seed="7"/>
+      <feColorMatrix in="noise" type="matrix"
+        values="0 0 0 0 0.55
+                0 0 0 0 0.42
+                0 0 0 0 0.28
+                0 0 0 0.06 0"/>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+
+    <path id="ingredientsCircle" d="M 200,200 m -148,0 a 148,148 0 1,1 296,0 a 148,148 0 1,1 -296,0" />
+  </defs>
+
+  <!-- Fondo circular kraft -->
+  <circle cx="200" cy="200" r="196" fill="#C8A375" filter="url(#kraftTexture)"/>
+  <circle cx="200" cy="200" r="196" fill="none" stroke="#5C4225" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Borde punteado tipo sello -->
+  <circle cx="200" cy="200" r="182" fill="none" stroke="#5C4225" stroke-width="2" stroke-dasharray="1.5,6" opacity="0.85"/>
+  <circle cx="200" cy="200" r="164" fill="none" stroke="#5C4225" stroke-width="1" opacity="0.6"/>
+
+  <!-- Ingredientes en círculo -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="10.5" letter-spacing="2.2" fill="#4A3319">
+    <textPath href="#ingredientsCircle" startOffset="0%">
+      • ACEITE DE COCO • MANTECA DE KARITÉ • AVENA • MIEL • GLICERINA VEGETAL •
+    </textPath>
+  </text>
+
+  <!-- Ramita decorativa superior -->
+  <g transform="translate(200,120)" stroke="#4A3319" stroke-width="1.4" fill="none" opacity="0.85">
+    <path d="M -22,6 Q 0,-10 22,6"/>
+    <path d="M -14,2 Q -10,-6 -16,-10"/>
+    <path d="M 14,2 Q 10,-6 16,-10"/>
+    <path d="M 0,-4 Q 0,-12 0,-16"/>
+    <ellipse cx="-16" cy="-11" rx="4" ry="2.4" transform="rotate(-30 -16 -11)" fill="#4A3319" opacity="0.85"/>
+    <ellipse cx="16" cy="-11" rx="4" ry="2.4" transform="rotate(30 16 -11)" fill="#4A3319" opacity="0.85"/>
+    <ellipse cx="0" cy="-17" rx="4" ry="2.4" fill="#4A3319" opacity="0.85"/>
+  </g>
+
+  <!-- Nombre de marca -->
+  <text x="200" y="188" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="46" letter-spacing="6" fill="#3E2A16" font-weight="600">ARITZ</text>
+
+  <!-- Línea divisoria ornamental -->
+  <g stroke="#4A3319" stroke-width="1.2" opacity="0.85">
+    <line x1="140" y1="204" x2="180" y2="204"/>
+    <line x1="220" y1="204" x2="260" y2="204"/>
+    <circle cx="200" cy="204" r="2.6" fill="#4A3319"/>
+  </g>
+
+  <!-- Tipo de producto -->
+  <text x="200" y="228" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="15" letter-spacing="3.5" fill="#3E2A16">JABÓN CORPORAL</text>
+
+  <!-- Subtítulo artesanal -->
+  <text x="200" y="252" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic" font-size="9.5" letter-spacing="1.5" fill="#5C4225" opacity="0.8">hecho a mano</text>
+</svg>

@@ -18,6 +18,13 @@ namespace PlantillaFullstack.Server.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllTechnologies()
+        {
+            var technologies = await _context.Technologies.ToListAsync();
+            return Ok(technologies);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTechnologies(int id)
         {
