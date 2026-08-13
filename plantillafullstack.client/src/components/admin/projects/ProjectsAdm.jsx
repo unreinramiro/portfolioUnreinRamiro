@@ -58,7 +58,10 @@ const ProjectsAdm = () => {
           <SearchBar />
         </div>
         <div className="col-lg-3 col-sm-12 d-flex justify-content-center">
-          <button className={styles.addButton} onClick={() => setShowAddModal(true)}>
+          <button
+            className={styles.addButton}
+            onClick={() => setShowAddModal(true)}
+          >
             <FaPlus />
             Agregar
           </button>
@@ -105,7 +108,7 @@ const ProjectsAdm = () => {
               );
               fetchProjects();
             } catch (err) {
-              console.error("Error al actualizar el proyecto", err);
+              console.error("Error al actualizar el proyecto", err.response?.data);
             }
           }}
           onDelete={async (id) => {
@@ -129,7 +132,26 @@ const ProjectsAdm = () => {
         />
       )}
       {showAddModal && (
-        <ProjectAddModal onClose={() => setShowAddModal(false)}/>
+        <ProjectAddModal
+          onClose={() => setShowAddModal(false)}
+          onSave={async (formData) => {
+            try {
+              const response = await axiosInstance.post(
+                'projects/addProject',
+                formData,
+                {
+                  headers: { "Content-Type": undefined },
+                },
+              );
+              setShowAddModal(false);
+              fetchProjects();
+              alertSuccess("Se agrego correctamente el proyecto");
+            } catch (error) {
+              console.error("Error al agregar el proyecto", err);
+              alertError("No se pudo agregar el proyecto");
+            }
+          }}
+        />
       )}
     </div>
   );

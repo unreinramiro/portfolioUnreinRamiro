@@ -1,11 +1,33 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ProjectAddModal.module.css";
-import axiosInstance from "../../../../services/api"
+import axiosInstance from "../../../../services/api";
 
 const ProjectAddModal = ({ onClose, onSave }) => {
   const [allTechnologies, setAllTechnologies] = useState([]);
 
   const [selectedTechIds, setSelectedTechIds] = useState([]);
+
+  const [form, setForm] = useState({
+    ProTitle: "",
+    ProDescription: "",
+    ProGithubUrl: "",
+    ProProductionUrl: "",
+  });
+
+  const [images, setImages] = useState({
+    ProImg1: "",
+    ProImg2: "",
+    ProImg3: "",
+    ProImg4: "",
+  });
+
+  const [imageFiles, setImageFiles] = useState({});
+
+  const handleImageChange = (key, file) => {
+    if (!file) return;
+    setImages({ ...images, [key]: URL.createObjectURL(file) });
+    setImageFiles({ ...imageFiles, [key]: file }); // Le suma o sobrescribe la propiedad cuyo nombre es el valor de key
+  };
 
   useEffect(() => {
     axiosInstance
@@ -19,8 +41,26 @@ const ProjectAddModal = ({ onClose, onSave }) => {
     );
   };
 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("ProTitle", form.ProTitle);
+    formData.append("ProDescription", form.ProDescription);
+    formData.append("ProGithubUrl", form.ProGithubUrl);
+    formData.append("ProProductionUrl", form.ProProductionUrl);
+
+    selectedTechIds.forEach((id) => formData.append("Technologies", id));
+
+    Object.entries(imageFiles).forEach(([key, file]) => {
+      if (file) formData.append(key, file);
+    });
+
+    onSave(formData);
   };
 
   return (
@@ -47,6 +87,7 @@ const ProjectAddModal = ({ onClose, onSave }) => {
                   accept="image/*"
                   className="d-none"
                   name={`ProImg${i + 1}`}
+                  onChange={(e) => handleImageChange(key, e.target.files[0])}
                 />
               </div>
             ))}
@@ -55,7 +96,13 @@ const ProjectAddModal = ({ onClose, onSave }) => {
           <div className="row">
             <div className="col-12">
               <label className="text-white">Título</label>
-              <input type="text" name="ProTitle" className={styles.input} />
+              <input
+                type="text"
+                name="ProTitle"
+                className={styles.input}
+                value={form.ProTitle}
+                onChange={handleChange}
+              />
             </div>
           </div>
 
@@ -66,6 +113,8 @@ const ProjectAddModal = ({ onClose, onSave }) => {
                 name="ProDescription"
                 rows={3}
                 className={styles.input}
+                value={form.ProDescription}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -73,7 +122,13 @@ const ProjectAddModal = ({ onClose, onSave }) => {
           <div className="row">
             <div className="col-6">
               <label className="text-white">GitHub URL</label>
-              <input type="text" name="ProGithubUrl" className={styles.input} />
+              <input
+                type="text"
+                name="ProGithubUrl"
+                className={styles.input}
+                value={form.ProGithubUrl}
+                onChange={handleChange}
+              />
             </div>
             <div className="col-6">
               <label className="text-white">Producción URL</label>
@@ -81,6 +136,8 @@ const ProjectAddModal = ({ onClose, onSave }) => {
                 type="text"
                 name="ProProductionUrl"
                 className={styles.input}
+                value={form.ProProductionUrl}
+                onChange={handleChange}
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./ProjectEditModal.module.css";
 import axiosInstance from "../../../../services/api";
 import { FaTrashAlt } from "react-icons/fa";
+import { alertError } from "../../../../utils/alerts";
 
 const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
   const [allTechnologies, setAllTechnologies] = useState([]);
@@ -51,6 +52,11 @@ const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
     formData.append("ProProductionUrl", form.ProProductionUrl);
 
     selectedTechIds.forEach((id) => formData.append("Technologies", id));
+
+    if (selectedTechIds.length === 0) {
+    alertError('El proyecto debe tener al menos una tecnología.');
+    return;
+}
 
     Object.entries(imageFiles).forEach(([key, file]) => {
       if (file) {

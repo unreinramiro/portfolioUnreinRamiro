@@ -113,5 +113,45 @@ namespace PlantillaFullstack.Server.Controllers
                 return StatusCode(500, "Error al eliminar el proyecto");
             }
         }
+
+        [HttpPost("addProject")]
+        public async Task<IActionResult> AddProject([FromForm] ProjectAddDto dto)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var project = new Project
+                {
+                    PRO_TITLE = dto.ProTitle,
+                    PRO_DESCRIPTION = dto.ProDescription,
+                    PRO_GITHUB_URL = dto.ProGithubUrl,
+                    PRO_PRODUCTION_URL = dto.ProProductionUrl,
+                    PRO_IMG_1 = await SaveImageIfPresent(dto.ProImg1, false, null),
+                    PRO_IMG_2 = await SaveImageIfPresent(dto.ProImg2, false, null),
+                    PRO_IMG_3 = await SaveImageIfPresent(dto.ProImg3, false, null),
+                    PRO_IMG_4 = await SaveImageIfPresent(dto.ProImg4, false, null)
+                };
+                _context.Projects.Add(project);
+                await _context.SaveChangesAsync();
+                
+                foreach (var techId in dto.Technologies)
+                {
+                    _context.ProjectTechnologies.Add(new ProjectTechnology
+                    {
+                        PRT_PRO_ID = project.PRO_ID,
+                        PRT_TEC_ID = techId
+                    });
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return Ok();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, "Error al agregar el proyecto");
+            }
+        }
     }
 }

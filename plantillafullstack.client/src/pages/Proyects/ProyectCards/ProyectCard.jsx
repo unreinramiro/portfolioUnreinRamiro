@@ -7,8 +7,7 @@ const ProyectCard = ({onShowModal, proyect, textButton}) => {
 
   return (
     <div className={styles.proyectCardContainer}>
-        <div className='row'>
-            <div className='col-12 d-flex flex-column gap-3 justify-content-between'>
+            <div className='col-12 d-flex flex-column gap-3 justify-content-between p-2'>
                 <div className={styles.imageProyectContainer}>
                     {proyect.prO_IMG_1 
                     ?
@@ -30,11 +29,10 @@ const ProyectCard = ({onShowModal, proyect, textButton}) => {
                         </span>
                     ))}
                 </div> */}
-                <div className={styles.detalleContainer}>
+                <div className={`${styles.detalleContainer}`}>
                     <button onClick={() => onShowModal(proyect)}>{textButton}</button>
                 </div>
             </div>
-        </div>
     </div>
   )
 }
