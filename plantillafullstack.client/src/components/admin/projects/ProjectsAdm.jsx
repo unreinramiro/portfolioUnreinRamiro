@@ -13,12 +13,14 @@ import {
   alertDelete,
 } from "../../../utils/alerts";
 import Swal from "sweetalert2";
+import ProjectAddModal from "./addProject/ProjectAddModal";
 
 const ProjectsAdm = () => {
   const [projects, setProjects] = useState([]);
   const scrollRef = useRef(null);
   const [editingProject, setEditingProject] = useState(null);
   const [showModalProy, setShowModalProy] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const fetchProjects = async () => {
     try {
@@ -56,7 +58,7 @@ const ProjectsAdm = () => {
           <SearchBar />
         </div>
         <div className="col-lg-3 col-sm-12 d-flex justify-content-center">
-          <button className={styles.addButton}>
+          <button className={styles.addButton} onClick={() => setShowAddModal(true)}>
             <FaPlus />
             Agregar
           </button>
@@ -125,6 +127,9 @@ const ProjectsAdm = () => {
             }
           }}
         />
+      )}
+      {showAddModal && (
+        <ProjectAddModal onClose={() => setShowAddModal(false)}/>
       )}
     </div>
   );
