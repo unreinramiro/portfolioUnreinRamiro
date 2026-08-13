@@ -71,6 +71,20 @@ INSERT INTO PROJECTS
 VALUES
 (4, 'Aritz Cosmetica Natural - Ecommerce', 'aritzProyect.png', null, null, null, 'Este es un proyecto de desarrollo web utilizando React y .NET con bases de datos en SQL Server. El proyecto consiste en la creación de una aplicación web que permite a los usuarios registrarse, iniciar sesión y gestionar su perfil. La aplicación también incluye funcionalidades para publicar contenido, interactuar con otros usuarios y administrar la base de datos.', 'https://github.com/unreinramiro/aritzCosmetica', 'https://www.aritz.com.ar/');
 
+INSERT INTO PROJECT_TECHNOLOGIES
+(PRT_ID, PRT_PRO_ID, PRT_TEC_ID)
+VALUES
+(1, 1, 1), (2, 1, 2), (3, 1, 3), (4, 1, 6), (5, 1, 5), (6, 1, 7), (7, 1, 8), (8, 1, 9), (9, 1, 19);
+
+SELECT *
+FROM PROJECT_TECHNOLOGIES
+
+SELECT *
+FROM TECHNOLOGIES;
+
+SELECT *
+FROM PROJECTS;
+
 SELECT COLUMN_NAME 
 FROM INFORMATION_SCHEMA.COLUMNS 
 WHERE TABLE_NAME = 'STUDIES' 

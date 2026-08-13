@@ -20,5 +20,13 @@ namespace PlantillaFullstack.Server.DTOs
 
         public IFormFile? ProImg4 { get; set; }
 
+        public bool ProImg1_remove { get; set; }
+
+        public bool ProImg2_remove { get; set; }
+
+        public bool ProImg3_remove { get; set; }
+
+        public bool ProImg4_remove { get; set; }
+
     }
 }

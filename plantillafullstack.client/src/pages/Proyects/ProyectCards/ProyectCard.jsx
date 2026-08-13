@@ -9,7 +9,7 @@ const ProyectCard = ({onShowModal, proyect, textButton}) => {
         <div className='row'>
             <div className='col-12 d-flex flex-column gap-3 justify-content-between'>
                 <div className={styles.imageProyectContainer}>
-                    <img src={'../../../../src/assets/' + proyect.prO_IMG_1} alt="proyect1"/>
+                    <img src={`http://localhost:5231/images/${proyect.prO_IMG_1}`} alt="proyect1"/>
                 </div>
                 <h6 className='text-white'>{proyect.prO_TITLE}</h6>
                 <div className={styles.descriptionContainer}>

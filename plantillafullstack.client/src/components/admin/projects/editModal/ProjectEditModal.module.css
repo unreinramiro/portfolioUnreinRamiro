@@ -110,3 +110,60 @@
     color: #111;
     border-color: #fff;
 }
+
+.techGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.techChip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #1a1a1a;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.techChip input {
+    accent-color: #fff;
+}
+
+.techChip:has(input:checked) {
+    border-color: #fff;
+    color: #fff;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.deleteIcon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 14px;
+    color: #e2685f;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.deleteIcon:hover {
+    color: #ff8078;
+}

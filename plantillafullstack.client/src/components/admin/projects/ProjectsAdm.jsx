@@ -5,6 +5,7 @@ import ProjectCard from '../../../pages/Proyects/ProyectCards/ProyectCard'
 import SearchBar from '../../SearchBar/SearchBar'
 import { FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ProjectEditModal from './editModal/ProjectEditModal'
+import { alertSuccess, alertError, alertConfirm, alertToast } from '../../../utils/alerts'
 
 
 const ProjectsAdm = () => {
@@ -86,8 +87,18 @@ const ProjectsAdm = () => {
             <ProjectEditModal
                 project={editingProject}
                 onClose={() => setEditingProject(null)}
-                onSave={(data) => { /* tu llamada a axiosInstance acá */ }}
-            />
+                onSave={async (formData) => {
+                  try {
+                    await axiosInstance.put(`projects/${editingProject.prO_ID}`, formData, {
+                      headers: { 'Content-Type': undefined }
+                    });
+                    setEditingProject(null);
+                    alertSuccess('Proyecto actualizado!', 'Los cambios se guardaron correctamente');
+                    fetchProjects();
+                  } catch (err) {
+                    console.error("Error al actualizar el proyecto", err);
+                  }
+                }} />
         )}
     </div>
   )
