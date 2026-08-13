@@ -20,6 +20,19 @@ const modernSwal = Swal.mixin({
     }
 });
 
+export const alertDelete = (title = '¿Eliminar este elemento?', text = 'Esta acción no se puede deshacer.') => {
+    return modernSwal.fire({
+        icon: 'warning',
+        title,
+        text,
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#e2685f',
+        reverseButtons: true
+    });
+};
+
 // Alert de éxito
 export const alertSuccess = (title, text = '') => {
     return modernSwal.fire({
@@ -78,4 +91,5 @@ export const alertToast = (icon, title) => {
             popup: 'swal-modern-popup'
         }
     });
+
 };

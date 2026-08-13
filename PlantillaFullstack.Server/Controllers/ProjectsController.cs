@@ -88,5 +88,30 @@ namespace PlantillaFullstack.Server.Controllers
                 return StatusCode(500, "Error al actualizar el proyecto");
             }
         }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteProject(int id)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var project = await _context.Projects.FindAsync(id);
+                if (project == null) return NotFound();
+
+                _context.Projects.Remove(project);
+
+                var projectTechnologies = _context.ProjectTechnologies.Where(pt => pt.PRT_PRO_ID == id);
+                _context.ProjectTechnologies.RemoveRange(projectTechnologies);
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return Ok();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, "Error al eliminar el proyecto");
+            }
+        }
     }
 }

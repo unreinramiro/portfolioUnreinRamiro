@@ -3,7 +3,7 @@ import styles from "./ProjectEditModal.module.css";
 import axiosInstance from "../../../../services/api";
 import { FaTrashAlt } from "react-icons/fa";
 
-const ProjectEditModal = ({ project, onClose, onSave }) => {
+const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
   const [allTechnologies, setAllTechnologies] = useState([]);
 
   const [selectedTechIds, setSelectedTechIds] = useState(
@@ -55,8 +55,8 @@ const ProjectEditModal = ({ project, onClose, onSave }) => {
     Object.entries(imageFiles).forEach(([key, file]) => {
       if (file) {
         formData.append(key, file);
-      } else if(file == null){
-        formData.append(key + '_remove', true);
+      } else if (file == null) {
+        formData.append(key + "_remove", true);
       }
     });
 
@@ -82,6 +82,11 @@ const ProjectEditModal = ({ project, onClose, onSave }) => {
     setImages({ ...images, [key]: null });
     setImageFiles({ ...imageFiles, [key]: null });
   };
+
+  const handleDelete = (id) => {
+    console.log(id);
+    onDelete(id);
+  }
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -198,17 +203,26 @@ const ProjectEditModal = ({ project, onClose, onSave }) => {
           </div>
 
           <div className="row mt-2">
-            <div className="col-12 d-flex justify-content-end gap-2">
+            <div className="col-12 d-flex justify-content-between gap-2">
               <button
                 type="button"
-                className={styles.cancelBtn}
-                onClick={onClose}
+                className={styles.deleteBtn}
+                onClick={() => handleDelete(project.prO_ID)}
               >
-                Cancelar
+                Eliminar
               </button>
-              <button type="submit" className={styles.saveBtn}>
-                Guardar
-              </button>
+              <div className="d-flex gap-2">
+                <button
+                  type="button"
+                  className={styles.cancelBtn}
+                  onClick={onClose}
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className={styles.saveBtn}>
+                  Guardar
+                </button>
+              </div>
             </div>
           </div>
         </form>
