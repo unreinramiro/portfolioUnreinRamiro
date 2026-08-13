@@ -21,11 +21,13 @@ const ProjectsAdm = () => {
   const [editingProject, setEditingProject] = useState(null);
   const [showModalProy, setShowModalProy] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [filtered, setFiltered] = useState([]);
 
   const fetchProjects = async () => {
     try {
       const response = await axiosInstance.get("projects");
       setProjects(response.data);
+      setFiltered(response.data);
       console.log("Projectos obtenidos:", response.data);
     } catch (e) {
       console.log("Error al traer los projectos");
@@ -51,11 +53,19 @@ const ProjectsAdm = () => {
     setEditingProject({ ...proyect, technologies: res.data });
   };
 
+  const handleSearch = (query) => {
+    setFiltered(
+      projects.filter((pr) =>
+        pr.prO_TITLE.toLowerCase().includes(query.toLowerCase()),
+      ),
+    );
+  };
+
   return (
     <div className={`container`}>
       <div className="row p-4 g-4">
         <div className="col-lg-9 col-sm-12 d-flex justify-content-center">
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
         </div>
         <div className="col-lg-3 col-sm-12 d-flex justify-content-center">
           <button
@@ -73,15 +83,21 @@ const ProjectsAdm = () => {
         </button>
 
         <div className={styles.projectsContainer} ref={scrollRef}>
-          {projects.map((proyect, index) => (
-            <div key={index} className={styles.projectItem}>
-              <ProjectCard
-                onShowModal={handleEditProject}
-                proyect={proyect}
-                textButton={"Editar"}
-              />
+          {filtered.length > 0 ? (
+            filtered.map((proyect, index) => (
+              <div key={index} className={styles.projectItem}>
+                <ProjectCard
+                  onShowModal={handleEditProject}
+                  proyect={proyect}
+                  textButton={"Editar"}
+                />
+              </div>
+            ))
+          ) : (
+            <div>
+              <p className="text-white">No se encontraron coincidencias</p>
             </div>
-          ))}
+          )}
         </div>
 
         <button className={styles.arrowButton} onClick={() => scroll("right")}>
@@ -108,7 +124,10 @@ const ProjectsAdm = () => {
               );
               fetchProjects();
             } catch (err) {
-              console.error("Error al actualizar el proyecto", err.response?.data);
+              console.error(
+                "Error al actualizar el proyecto",
+                err.response?.data,
+              );
             }
           }}
           onDelete={async (id) => {
@@ -137,7 +156,7 @@ const ProjectsAdm = () => {
           onSave={async (formData) => {
             try {
               const response = await axiosInstance.post(
-                'projects/addProject',
+                "projects/addProject",
                 formData,
                 {
                   headers: { "Content-Type": undefined },
