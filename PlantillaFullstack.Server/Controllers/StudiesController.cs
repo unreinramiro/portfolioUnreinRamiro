@@ -35,5 +35,23 @@ namespace PlantillaFullstack.Server.Controllers
 
             return Ok(studies);
         }
+
+        [HttpGet("studiesAdm/{id}")]
+        public IActionResult GetStudiesAdm(int id)
+        {
+            var university = _context.Studies
+                    .Where(s => s.STD_STY_ID == 1)
+                    .ToList();
+
+            if (id != 1) {
+                var course = _context.Studies
+                    .Where(s => s.STD_STY_ID == 2)
+                    .ToList();
+
+                return Ok(course);
+            }
+
+            return Ok(university);
+        }
     }
 }

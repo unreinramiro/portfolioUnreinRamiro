@@ -3,7 +3,6 @@ import styles from './Dashboard.module.css'
 import ProfileAdm from '../../components/admin/profile/ProfileAdm'
 import ProjectsAdm from '../../components/admin/projects/ProjectsAdm'
 import StudiesAdm from '../../components/admin/studies/StudiesAdm'
-import AssignaturesAdm from '../../components/admin/assignatures/AssignaturesAdm'
 import TechAdm from '../../components/admin/technologies/TechAdm'
 import { alertSuccess, alertError, alertConfirm, alertToast } from '../../utils/alerts'
 
@@ -36,10 +35,6 @@ const Dashboard = () => {
                             className={`${styles.sidebarButton} ${
                             activeTab === "Studies" ? styles.active : ""}`}>Studies</button>
                         <button 
-                            onClick={() => setActiveTab("Assignatures")}
-                            className={`${styles.sidebarButton} ${
-                            activeTab === "Assignatures" ? styles.active : ""}`}>Assignatures</button>
-                        <button 
                             onClick={() => setActiveTab("Technologies")}
                             className={`${styles.sidebarButton} ${
                             activeTab === "Technologies" ? styles.active : ""}`}>Technologies</button>
@@ -60,7 +55,6 @@ const Dashboard = () => {
                         {activeTab === "Profile" && <ProfileAdm />}
                         {activeTab === "Projects" && <ProjectsAdm />}
                         {activeTab === "Studies" && <StudiesAdm />}
-                        {activeTab === "Assignatures" && <AssignaturesAdm />}
                         {activeTab === "Technologies" && <TechAdm />}
                     </div>
                 </div>
