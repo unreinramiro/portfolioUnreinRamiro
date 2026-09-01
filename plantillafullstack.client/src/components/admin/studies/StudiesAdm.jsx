@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styles from './StudiesAdm.module.css'
 import axiosInstance from '../../../services/api'
-//import StudyEditModal from './StudyEditModal'
+import StudyEditModal from './studyEditModal/StudyEditModal'
 import { alertDelete, alertSuccess, alertError } from '../../../utils/alerts'
+import StudyAddModal from './studyAddModal/StudyAddModal'
 
 // Ajustá estos IDs según los valores reales de tu tabla STUDY_TYPES
 const STY_ACADEMICO = 1
@@ -13,6 +14,7 @@ const StudiesAdm = () => {
   const [activeTab, setActiveTab] = useState(STY_ACADEMICO)
   const [studies, setStudies] = useState([])
   const [editingStudy, setEditingStudy] = useState(null) // null = cerrado, {} = alta, objeto = edición
+  const [addStudy, setAddStudy] = useState(null);
 
   const fetchStudies = async () => {
     try {
@@ -58,7 +60,7 @@ const StudiesAdm = () => {
   }
 
   return (
-    <div className='container p-5'>
+    <div className='container h-100 p-5'>
 
       <ul className={styles.tabs}>
         <li
@@ -76,7 +78,7 @@ const StudiesAdm = () => {
       </ul>
 
       <div className='d-flex justify-content-end mb-3'>
-        <button className={styles.addButton} onClick={() => setEditingStudy({})}>
+        <button className={styles.addButton} onClick={() => setAddStudy(true)}>
           + Agregar
         </button>
       </div>
@@ -90,8 +92,8 @@ const StudiesAdm = () => {
                 <span>{study.stD_INSTITUTION}</span>
               </div>
               <div className='d-flex gap-2'>
-                <button onClick={() => setEditingStudy(study)}>Editar</button>
-                <button onClick={() => handleDelete(study.stD_ID)}>Eliminar</button>
+                <button className={`${styles.addButton} ${styles.updBtn}`}  onClick={() => setEditingStudy(study)}>Editar</button>
+                <button className={`${styles.addButton} ${styles.delBtn}`}  onClick={() => handleDelete(study.stD_ID)}>Eliminar</button>
               </div>
             </div>
           </div>
@@ -100,11 +102,15 @@ const StudiesAdm = () => {
 
       {editingStudy && (
         <StudyEditModal
-          study={editingStudy}
-          showSubjects={activeTab === STY_ACADEMICO}
+          study={editingStudy} // Paso el estudio dependiendo si es curso o facultad
+          showSubjects={activeTab === STY_ACADEMICO} //Si ambos son 1
           onClose={() => setEditingStudy(null)}
           onSave={handleSave}
         />
+      )}
+
+      {addStudy && (
+        <StudyAddModal/>
       )}
 
     </div>

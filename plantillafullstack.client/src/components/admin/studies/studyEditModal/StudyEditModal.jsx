@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import AssignatureEditModal from './assignaturesEditModal/AssignatureEditModal';
+import styles from './StudyEditModal.module.css'
+import axiosInstance from '../../../../services/api'
+import { FaTrashAlt } from 'react-icons/fa'
 
 const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
   const [form, setForm] = useState({ StdTitle: study.stD_TITLE, /* ... */ });
@@ -6,7 +10,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
   const [editingAssignature, setEditingAssignature] = useState(null); // null = cerrado
 
   useEffect(() => {
-    if (showSubjects && study.stD_ID) {
+    if (showSubjects && study.stD_ID) { // Si es un estudio de universidad
       axiosInstance.get(`assignatures?studyId=${study.stD_ID}`)
         .then(res => setAssignatures(res.data));
     }
@@ -18,10 +22,10 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
         {/* form de STUDIES: título, institución, fecha, etc. */}
 
         {showSubjects && (
-          <section>
+          <section className={styles.sectionAsgContainer}>
             <div className="d-flex justify-content-between align-items-center">
-              <label>Asignaturas</label>
-              <button type="button" onClick={() => setEditingAssignature({})}>
+              <h5 className='text-white'>Asignaturas</h5>
+              <button className={styles.addButton} type="button" onClick={() => setEditingAssignature({})}>
                 + Agregar
               </button>
             </div>
@@ -30,10 +34,12 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
               {assignatures.map(a => (
                 <li key={a.asG_ID}>
                   {a.asG_TITLE}
-                  <button type="button" onClick={() => setEditingAssignature(a)}>Editar</button>
-                  <button type="button" onClick={() => handleDeleteAssignature(a.asG_ID)}>
-                    <FaTrashAlt />
-                  </button>
+                  <div>
+                    <button type="button" onClick={() => setEditingAssignature(a)}>Editar</button>
+                    <button type="button" onClick={() => handleDeleteAssignature(a.asG_ID)}>
+                      <FaTrashAlt />
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -53,6 +59,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           }}
         />
       )}
+      
     </div>
   );
 };

@@ -38,6 +38,14 @@
     border-color: #fff;
 }
 
+.addButton.updBtn:hover {
+    border-color: #b87802;
+}
+
+.addButton.delBtn:hover {
+    border-color: #f80202;
+}
+
 .studyItem {
     display: flex;
     justify-content: space-between;
