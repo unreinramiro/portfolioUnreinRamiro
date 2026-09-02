@@ -4,9 +4,19 @@ import styles from "./StudyEditModal.module.css";
 import axiosInstance from "../../../../services/api";
 import { FaTrashAlt } from "react-icons/fa";
 import AssignatureAddModal from "./assignaturesAddModal/AssignatureAddModal";
+import { formatDateForInput } from "../../../../utils/date";
 
 const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
-  const [form, setForm] = useState({ StdTitle: study.stD_TITLE /* ... */ });
+  const [formEditStudy, setFormEditStudy] = useState({
+    StdStyId: study.stD_STY_ID,
+    StdTitle: study.stD_TITLE,
+    StdDesc: study.stD_DESCRIPTION,
+    StdInstitution: study.stD_INSTITUTION,
+    StdStart: study.stD_START_DATE,
+    StdEnd: study.stD_END_DATE,
+    StdHours: study.stD_HOURS,
+    StdCertification: study.stD_CERTIFICATION_URL,
+  });
   const [assignatures, setAssignatures] = useState([]);
   const [editingAssignature, setEditingAssignature] = useState(null); // null = cerrado
   const [asgAddModal, setAsgAddModal] = useState(null);
@@ -26,7 +36,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className="row">
           <div className="col-8">
-              <h3 className="text-white">Editar Estudio</h3>
+            <h3 className="text-white">Editar Estudio</h3>
           </div>
           <div className="col-4 d-flex justify-content-center">
             <div className="d-flex gap-2">
@@ -40,14 +50,20 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           <div className="row">
             <div className="col-8">
               <label className="text-white">Título</label>
-              <input type="text" name="ProTitle" className={styles.input} />
+              <input
+                type="text"
+                name="StdTitle"
+                value={formEditStudy.StdTitle}
+                className={styles.input}
+              />
             </div>
             <div className="col-4">
               <label className="text-white">Tipo de estudio</label>
               <select
                 className={styles.input}
-                value={tipoEstudio}
+                value={formEditStudy.StdStyId}
                 onChange={(e) => setTipoEstudio(e.target.value)}
+                name="StdStyId"
               >
                 <option value="1">Universitario</option>
                 <option value="2">Curso</option>
@@ -61,9 +77,10 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
             <div className="col-12">
               <label className="text-white">Descripción</label>
               <textarea
-                name="ProDescription"
+                name="StdDesc"
                 rows={3}
                 className={styles.input}
+                value={formEditStudy.StdDesc}
               />
             </div>
           </div>
@@ -71,41 +88,54 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           <div className="row">
             <div className="col-12">
               <label className="text-white">Institucion</label>
-              <input type="text" name="ProTitle" className={styles.input} />
+              <input
+                type="text"
+                name="StdInstitution"
+                value={formEditStudy.StdInstitution}
+                className={styles.input}
+              />
             </div>
           </div>
 
           <div className="row">
             <div className="col-6">
               <label className="text-white">Fecha de inicio</label>
-              <input type="date" name="ProGithubUrl" className={styles.input} />
+              <input
+                type="date"
+                name="StdStart"
+                value={formatDateForInput(formEditStudy.StdStart)}
+                className={styles.input}
+              />
             </div>
             <div className="col-6">
               <label className="text-white">Fecha de fin</label>
               <input
                 type="date"
-                name="ProProductionUrl"
+                name="StdEnd"
                 className={styles.input}
+                value={formatDateForInput(formEditStudy.StdEnd)}
               />
             </div>
           </div>
 
-          {tipoEstudio !== "1" && (
+          {study.stD_STY_ID !== 1 && (
             <div className="row">
               <div className="col-8">
                 <label className="text-white">URL Certificado</label>
                 <input
                   type="text"
-                  name="ProProductionUrl"
+                  name="StdCertification"
                   className={styles.input}
+                  value={formEditStudy.StdCertification}
                 />
               </div>
               <div className="col-4">
                 <label className="text-white">Cantidad de horas:</label>
                 <input
                   type="number"
-                  name="ProGithubUrl"
+                  name="StdHours"
                   className={styles.input}
+                  value={formEditStudy.StdHours}
                 />
               </div>
             </div>
@@ -115,7 +145,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
         {showSubjects && (
           <section className={styles.sectionAsgContainer}>
             <div className="d-flex justify-content-between align-items-center">
-              <h5 className="text-white">Asignaturas</h5>
+              <h3 className="text-white">Asignaturas</h3>
               <button
                 className={styles.addButton}
                 type="button"
