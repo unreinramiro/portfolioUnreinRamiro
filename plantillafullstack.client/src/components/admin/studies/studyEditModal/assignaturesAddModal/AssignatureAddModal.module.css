@@ -9,10 +9,10 @@
     z-index: 1000;
 }
 
-.modal{
+.AsgAddModal {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     width: 90%;
     max-width: 600px;
     max-height: 85vh;
@@ -25,30 +25,30 @@
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
-.modal::-webkit-scrollbar {
+.AsgAddModal::-webkit-scrollbar {
     width: 4px;
 }
 
-.modal::-webkit-scrollbar-track {
+.AsgAddModal::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.modal::-webkit-scrollbar-thumb {
+.AsgAddModal::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
-.modal::-webkit-scrollbar-thumb:hover {
+.AsgAddModal::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-.modal h3 {
+.AsgAddModal h3 {
     letter-spacing: 2px;
     font-weight: 200;
     font-size: 1.6rem;
 }
 
-.modal label {
+.AsgAddModal label {
     display: block;
     font-size: 0.8rem;
     font-weight: 200;
@@ -96,70 +96,4 @@
 
 .cancelBtn:hover{
     border-color: rgb(153, 41, 41);
-}
-
-.sectionAsgContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.assignatureList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.assignatureList li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1a1a1a;
-    border: 0.5px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    padding: 8px 12px;
-    color: #fff;
-    font-size: 0.9rem;
-}
-
-.assignatureList li button {
-    background: transparent;
-    border: 0.5px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    color: #fff;
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    margin-left: 8px;
-    cursor: pointer;
-    transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.assignatureList li button:hover {
-    border-color: #fff;
-}
-
-.assignatureList li button:last-child {
-    color: #e2685f;
-    border-color: transparent;
-    padding: 4px 6px;
-}
-
-.assignatureList li button:last-child:hover {
-    color: #ff8078;
-}
-
-.addButton {
-    background-color: transparent;
-    border: 0.5px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
-    border-radius: 6px;
-    padding: 8px 16px;
-    cursor: pointer;
-}
-
-.addButton:hover {
-    border-color: #fff;
 }

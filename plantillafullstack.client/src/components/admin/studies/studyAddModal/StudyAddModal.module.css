@@ -70,3 +70,41 @@
     outline: none;
     border-color: rgba(255, 255, 255, 0.5);
 }
+
+.input[type="select"],
+select.input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff' fill-opacity='0.6' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+}
+
+.addButton {
+    background-color: transparent;
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    border-color: #fff;
+}
+
+.cancelBtn{
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+}
+
+.cancelBtn:hover{
+    border-color: rgb(153, 41, 41);
+}

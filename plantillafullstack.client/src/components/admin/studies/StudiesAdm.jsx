@@ -110,7 +110,7 @@ const StudiesAdm = () => {
       )}
 
       {addStudy && (
-        <StudyAddModal/>
+        <StudyAddModal onClose={() => setAddStudy(null)}/>
       )}
 
     </div>
