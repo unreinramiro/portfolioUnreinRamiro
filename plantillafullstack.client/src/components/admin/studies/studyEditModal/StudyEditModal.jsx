@@ -20,10 +20,15 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
   const [assignatures, setAssignatures] = useState([]);
   const [editingAssignature, setEditingAssignature] = useState(null); // null = cerrado
   const [asgAddModal, setAsgAddModal] = useState(null);
-  const [tipoEstudio, setTipoEstudio] = useState("1");
+  const [showAsgBtn, setShowAsgBtn] = useState(false);
 
   useEffect(() => {
-    console.log("El showSubjects es: ", showSubjects, "El stD_ID", study.stD_ID);
+    console.log(
+      "El showSubjects es: ",
+      showSubjects,
+      "El stD_ID",
+      study.stD_ID,
+    );
     if (showSubjects && study.stD_ID) {
       // Si es un estudio de universidad
       axiosInstance
@@ -31,6 +36,10 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
         .then((res) => setAssignatures(res.data));
     }
   }, [study.stD_ID]);
+
+  const handleChange = (e) => {
+    setFormEditStudy({ ...formEditStudy, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -56,6 +65,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 name="StdTitle"
                 value={formEditStudy.StdTitle}
                 className={styles.input}
+                onChange={handleChange}
               />
             </div>
             <div className="col-4">
@@ -63,8 +73,9 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
               <select
                 className={styles.input}
                 value={formEditStudy.StdStyId}
-                onChange={(e) => setTipoEstudio(e.target.value)}
+                onChange={handleChange}
                 name="StdStyId"
+                disabled
               >
                 <option value="1">Universitario</option>
                 <option value="2">Curso</option>
@@ -82,6 +93,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 rows={3}
                 className={styles.input}
                 value={formEditStudy.StdDesc}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -94,6 +106,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 name="StdInstitution"
                 value={formEditStudy.StdInstitution}
                 className={styles.input}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -106,6 +119,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 name="StdStart"
                 value={formatDateForInput(formEditStudy.StdStart)}
                 className={styles.input}
+                onChange={handleChange}
               />
             </div>
             <div className="col-6">
@@ -115,6 +129,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 name="StdEnd"
                 className={styles.input}
                 value={formatDateForInput(formEditStudy.StdEnd)}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -128,6 +143,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                   name="StdCertification"
                   className={styles.input}
                   value={formEditStudy.StdCertification}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-4">
@@ -137,6 +153,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                   name="StdHours"
                   className={styles.input}
                   value={formEditStudy.StdHours}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -144,6 +161,10 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
         </form>
 
         {showSubjects && assignatures.length > 0 && (
+          showAsgBtn != true ? <button type="button" className={styles.addButton} onClick={ ()=> setShowAsgBtn(true) }>Ver Asignaturas</button> : ''
+        )}
+
+        {showSubjects && assignatures.length > 0 && showAsgBtn && ( 
           <section className={styles.sectionAsgContainer}>
             <div className="d-flex justify-content-between align-items-center">
               <h3 className="text-white">Asignaturas</h3>
