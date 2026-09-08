@@ -15,11 +15,11 @@ namespace PlantillaFullstack.Server.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult GetAcademicAssignatures()
+        [HttpGet("{id}")]
+        public IActionResult GetAcademicAssignatures(int id)
         {
             var assignatures = _context.Assignatures
-                .Where(a => a.ASG_STD_ID == 1)
+                .Where(a => a.ASG_STD_ID == id)
                 .ToList();
             return Ok(assignatures);
         }

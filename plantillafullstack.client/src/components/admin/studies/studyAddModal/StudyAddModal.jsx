@@ -1,8 +1,35 @@
 import React, { useState, useEffect } from "react";
 import styles from "./StudyAddModal.module.css";
 
-const StudyAddModal = ({ onClose }) => {
-  const [tipoEstudio, setTipoEstudio] = useState("1");
+const StudyAddModal = ({ onClose, onSave }) => {
+  const [formAddStudy, setformAddStudy] = useState({
+    StdStyId: "1",
+    StdTitle: "",
+    StdDesc: "",
+    StdInstitution: "",
+    StdStart: null,
+    StdEnd: null,
+    StdHours: null,
+    StdCertification: null,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    Object.entries(formAddStudy).forEach(([key, value]) => {
+      if (value !== null && value !== undefined && value !== "") {
+        formData.append(key, value);
+      }
+    });
+
+    onSave(formData);
+  };
+
+  const handleChange = (e) => {
+    setformAddStudy({ ...formAddStudy, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -11,18 +38,27 @@ const StudyAddModal = ({ onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-white">Agregar Estudio</h3>
-        <form className="container d-flex flex-column gap-3">
+        <form
+          className="container d-flex flex-column gap-3"
+          onSubmit={handleSubmit}
+        >
           <div className="row">
             <div className="col-8">
               <label className="text-white">Título</label>
-              <input type="text" name="ProTitle" className={styles.input} />
+              <input
+                type="text"
+                name="StdTitle"
+                className={styles.input}
+                onChange={handleChange}
+              />
             </div>
             <div className="col-4">
               <label className="text-white">Tipo de estudio</label>
               <select
+                name="StdStyId"
                 className={styles.input}
-                value={tipoEstudio}
-                onChange={(e) => setTipoEstudio(e.target.value)}
+                value={formAddStudy.StdStyId}
+                onChange={handleChange}
               >
                 <option value="1">Universitario</option>
                 <option value="2">Curso</option>
@@ -36,9 +72,10 @@ const StudyAddModal = ({ onClose }) => {
             <div className="col-12">
               <label className="text-white">Descripción</label>
               <textarea
-                name="ProDescription"
+                name="StdDesc"
                 rows={3}
                 className={styles.input}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -46,45 +83,58 @@ const StudyAddModal = ({ onClose }) => {
           <div className="row">
             <div className="col-12">
               <label className="text-white">Institucion</label>
-              <input type="text" name="ProTitle" className={styles.input} />
+              <input
+                type="text"
+                name="StdInstitution"
+                className={styles.input}
+                onChange={handleChange}
+              />
             </div>
           </div>
 
           <div className="row">
             <div className="col-6">
               <label className="text-white">Fecha de inicio</label>
-              <input type="date" name="ProGithubUrl" className={styles.input} />
+              <input
+                type="date"
+                name="StdStart"
+                className={styles.input}
+                onChange={handleChange}
+              />
             </div>
             <div className="col-6">
               <label className="text-white">Fecha de fin</label>
               <input
                 type="date"
-                name="ProProductionUrl"
+                name="StdEnd"
                 className={styles.input}
+                onChange={handleChange}
               />
             </div>
           </div>
 
-          {tipoEstudio !== "1" && (
-              <div className="row">
-                <div className="col-8">
-                  <label className="text-white">URL Certificado</label>
-                  <input
-                    type="text"
-                    name="ProProductionUrl"
-                    className={styles.input}
-                  />
-                </div>
-                <div className="col-4">
-                  <label className="text-white">Cantidad de horas:</label>
-                  <input
-                    type="number"
-                    name="ProGithubUrl"
-                    className={styles.input}
-                  />
-                </div>
+          {formAddStudy.StdStyId !== "1" && (
+            <div className="row">
+              <div className="col-8">
+                <label className="text-white">URL Certificado</label>
+                <input
+                  type="text"
+                  name="StdCertification"
+                  className={styles.input}
+                  onChange={handleChange}
+                />
               </div>
-            )}
+              <div className="col-4">
+                <label className="text-white">Cantidad de horas:</label>
+                <input
+                  type="number"
+                  name="StdHours"
+                  className={styles.input}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          )}
 
           <div className="row mt-2">
             <div className="col-12 d-flex justify-content-between gap-2">

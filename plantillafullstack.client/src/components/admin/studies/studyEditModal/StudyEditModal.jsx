@@ -23,10 +23,11 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
   const [tipoEstudio, setTipoEstudio] = useState("1");
 
   useEffect(() => {
+    console.log("El showSubjects es: ", showSubjects, "El stD_ID", study.stD_ID);
     if (showSubjects && study.stD_ID) {
       // Si es un estudio de universidad
       axiosInstance
-        .get(`assignatures?studyId=${study.stD_ID}`)
+        .get(`assignatures/${study.stD_ID}`)
         .then((res) => setAssignatures(res.data));
     }
   }, [study.stD_ID]);
@@ -142,7 +143,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           )}
         </form>
 
-        {showSubjects && (
+        {showSubjects && assignatures.length > 0 && (
           <section className={styles.sectionAsgContainer}>
             <div className="d-flex justify-content-between align-items-center">
               <h3 className="text-white">Asignaturas</h3>
