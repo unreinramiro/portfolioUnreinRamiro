@@ -31,7 +31,7 @@ const StudiesAdm = () => {
   }, [activeTab]);
 
   const handleDelete = async (id) => {
-    const result = await alertDelete("¿Eliminar este registro?");
+    const result = await alertDelete("¿Eliminar este estudio?");
     if (!result.isConfirmed) return;
 
     try {

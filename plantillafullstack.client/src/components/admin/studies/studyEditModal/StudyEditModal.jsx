@@ -5,6 +5,11 @@ import axiosInstance from "../../../../services/api";
 import { FaTrashAlt } from "react-icons/fa";
 import AssignatureAddModal from "./assignaturesAddModal/AssignatureAddModal";
 import { formatDateForInput } from "../../../../utils/date";
+import {
+  alertDelete,
+  alertSuccess,
+  alertError,
+} from "../../../../utils/alerts";
 
 const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
   const [formEditStudy, setFormEditStudy] = useState({
@@ -48,6 +53,23 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
     console.log(formEditStudy);
     onSave(formEditStudy);
   };
+
+  const handleDeleteAssignature = async (id) => {
+      const result = await alertDelete("¿Eliminar esta asignatura?");
+      if (!result.isConfirmed) return;
+
+      try {
+        await axiosInstance.delete(`assignatures/deleteAsignature/${id}`);
+        axiosInstance
+          .get(`assignatures/${study.stD_ID}`)
+          .then((res) => setAssignatures(res.data));
+        setEditingAssignature(null);
+        alertSuccess("Eliminado correctamente");
+      } catch (err) {
+        console.error("Error al eliminar", err);
+        alertError("No se pudo eliminar");
+      }
+  }
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -244,15 +266,65 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           assignature={editingAssignature}
           studyId={study.stD_ID}
           onClose={() => setEditingAssignature(null)}
-          onSave={(data) => {
-            /* POST o PUT según tenga asG_ID */
-            // luego: refrescar `assignatures` y cerrar
+          onSave={async (asgFormData) => {
+            try {
+              const response = await axiosInstance.put(
+                `assignatures/updAssignature`,
+                asgFormData,
+              );
+              axiosInstance
+                .get(`assignatures/${study.stD_ID}`)
+                .then((res) => setAssignatures(res.data));
+              alertSuccess("Se actualizo la asignatura exitosamente");
+            } catch (err) {
+              console.error(
+                "Error al actualizar la asignatura:",
+                err.response?.data || err.message || err,
+              );
+            }
+          }}
+          onDelete={async (id) => {
+            const result = await alertDelete("¿Eliminar esta asignatura?");
+            if (!result.isConfirmed) return;
+
+            try {
+              await axiosInstance.delete(`assignatures/deleteAsignature/${id}`);
+              axiosInstance
+                .get(`assignatures/${study.stD_ID}`)
+                .then((res) => setAssignatures(res.data));
+              setEditingAssignature(null);
+              alertSuccess("Eliminado correctamente");
+            } catch (err) {
+              console.error("Error al eliminar", err);
+              alertError("No se pudo eliminar");
+            }
           }}
         />
       )}
 
       {asgAddModal && (
-        <AssignatureAddModal onClose={() => setAsgAddModal(null)} />
+        <AssignatureAddModal
+          studyId={study.stD_ID}
+          onClose={() => setAsgAddModal(null)}
+          onSave={async (formData) => {
+            try {
+              const response = await axiosInstance.post(
+                `assignatures/addAssignature`,
+                formData,
+              );
+              const responseGet = await axiosInstance.get(
+                `assignatures/${study.stD_ID}`,
+              );
+              setAssignatures(responseGet.data);
+              alertSuccess("Se agrego la asignatura exitosamente");
+            } catch (err) {
+              console.error(
+                "Error al agregar la asignatura:",
+                err.response?.data || err.message || err,
+              );
+            }
+          }}
+        />
       )}
     </div>
   );

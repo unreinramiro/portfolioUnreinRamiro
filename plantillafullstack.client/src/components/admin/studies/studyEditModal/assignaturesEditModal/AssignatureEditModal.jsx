@@ -1,19 +1,43 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AssignatureEditModal.module.css";
 
-const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
+const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete }) => {
   const [asgFormData, setAsgFormData] = useState({
-    asg_title: assignature.asG_TITLE,
-    asg_first_note: assignature.asG_FIRST_NOTE,
-    asg_second_note: assignature.asG_SECOND_NOTE,
-    asg_promotion: assignature.asG_PROMOTION ? assignature.asG_PROMOTION : "No",
-    asg_semester: assignature.asG_SEMESTER,
-    asg_status: assignature.asG_STATUS,
-    asg_year: assignature.asG_YEAR,
+    AsgId: assignature.asG_ID,
+    AsgStdId: assignature.asG_STD_ID,
+    AsgTitle: assignature.asG_TITLE,
+    AsgFirstNote: assignature.asG_FIRST_NOTE,
+    AsgSecondNote: assignature.asG_SECOND_NOTE,
+    AsgPromotion: assignature.asG_PROMOTION ?? assignature.asgPromotion ?? false,
+    AsgSemester: assignature.asG_SEMESTER,
+    AsgStatus: assignature.asG_STATUS,
+    AsgYear: assignature.asG_YEAR,
   });
 
   const handleChange = (e) => {
-    setAsgFormData({ ...asgFormData, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target;
+
+    let parsedValue = value;
+
+    if (type === "number") {
+      parsedValue = value === "" ? null : parseFloat(value);
+    } else if (name === "AsgPromotion") {
+      parsedValue = value === "true"; // Convierte string del select a boolean
+    } else if (name === "AsgSemester" || name === "AsgYear") {
+      parsedValue = value === "" ? null : parseInt(value, 10);
+    }
+
+    setAsgFormData((prev) => ({
+      ...prev,
+      [name]: parsedValue,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(asgFormData);
+    onSave(asgFormData);
   };
 
   return (
@@ -24,15 +48,15 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
       >
         <h3 className="text-white text-center">Editar Asignatura</h3>
 
-        <form className="container d-flex flex-column gap-3">
+        <form className="container d-flex flex-column gap-3" onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-12">
               <label className="text-white">Título</label>
               <input
                 type="text"
-                name="asg_title"
+                name="AsgTitle"
                 className={styles.input}
-                value={asgFormData.asg_title}
+                value={asgFormData.AsgTitle}
                 onChange={handleChange}
               />
             </div>
@@ -43,9 +67,9 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
               <label className="text-white">Nota 1er Parcial</label>
               <input
                 type="number"
-                name="asg_first_note"
+                name="AsgFirstNote"
                 className={styles.input}
-                value={asgFormData.asg_first_note}
+                value={asgFormData.AsgFirstNote}
                 onChange={handleChange}
               />
             </div>
@@ -53,9 +77,9 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
               <label className="text-white">Nota 2do Parcial</label>
               <input
                 type="number"
-                name="asg_second_note"
+                name="AsgSecondNote"
                 className={styles.input}
-                value={asgFormData.asg_second_note}
+                value={asgFormData.AsgSecondNote}
                 onChange={handleChange}
               />
             </div>
@@ -66,8 +90,8 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
               <label className="text-white">Anio</label>
               <select
                 className={styles.input}
-                name="asg_year"
-                value={asgFormData.asg_year}
+                name="AsgYear"
+                value={asgFormData.AsgYear}
                 onChange={handleChange}
               >
                 <option value="1">1</option>
@@ -78,8 +102,8 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
               <label className="text-white">Semestre</label>
               <select
                 className={styles.input}
-                name="asg_semester"
-                value={asgFormData.asg_semester}
+                name="AsgSemester"
+                value={asgFormData.AsgSemester}
                 onChange={handleChange}
               >
                 <option>1</option>
@@ -90,8 +114,8 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
               <label className="text-white">Estado</label>
               <select
                 className={styles.input}
-                name="asg_status"
-                value={asgFormData.asg_status}
+                name="AsgStatus"
+                value={asgFormData.AsgStatus}
                 onChange={handleChange}
               >
                 <option>Sin iniciar</option>
@@ -106,19 +130,19 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave }) => {
               <label className="text-white">Promocionada</label>
               <select
                 className={styles.input}
-                name="asg_promotion"
-                value={asgFormData.asg_promotion}
+                name="AsgPromotion"
+                value={asgFormData.AsgPromotion}
                 onChange={handleChange}
               >
-                <option>Si</option>
-                <option>No</option>
+                <option value="true">Si</option>
+                <option value="false">No</option>
               </select>
             </div>
           </div>
 
           <div className="row mt-2">
             <div className="col-12 d-flex justify-content-between gap-2">
-              <button type="button" className={styles.deleteBtn}>
+              <button type="button" className={styles.deleteBtn} onClick={() => onDelete(asgFormData.AsgId)}>
                 Eliminar
               </button>
               <div className="d-flex gap-2">

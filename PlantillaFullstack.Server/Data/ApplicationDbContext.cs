@@ -10,7 +10,6 @@ namespace PlantillaFullstack.Server.Data
         {
         }
 
-        // DbSets for your entities go here
         public DbSet<Technology> Technologies { get; set; }
         public DbSet<TechTypes> TechTypes { get; set; }
         public DbSet<ProjectTechnology> ProjectTechnologies { get; set; }
