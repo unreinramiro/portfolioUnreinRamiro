@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlantillaFullstack.Server.Models;
 using PlantillaFullstack.Server.Data;
 using PlantillaFullstack.Server.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace PlantillaFullstack.Server.Controllers
 {
@@ -76,6 +77,36 @@ namespace PlantillaFullstack.Server.Controllers
                 await _context.SaveChangesAsync();
 
                 return Ok(study);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error al insertar un estudio: {ex.Message}");
+                return StatusCode(500, "Hubo un error al insertar un nuevo estudio.");
+            }
+        }
+
+        [HttpPut("studiesAdm/updStudy")]
+        public async Task<IActionResult> UpdStudy([FromBody] StudyAddDto dto)
+        {
+            try
+            {
+                var study = await _context.Studies
+                        .FirstOrDefaultAsync(s => s.STD_ID == dto.StdId);
+
+                if (study == null) return BadRequest("No se encontro el estudio");
+
+                study.STD_TITLE = dto.StdTitle;
+                study.STD_DESCRIPTION = dto.StdDesc;
+                study.STD_INSTITUTION = dto.StdInstitution;
+                study.STD_START_DATE = dto.StdStart;
+                study.STD_END_DATE = dto.StdEnd;
+                study.STD_HOURS = dto.StdHours;
+                study.STD_CERTIFICATION_URL = dto.StdCertification;
+
+                await _context.SaveChangesAsync();
+
+                return Ok("Estudio actualizado correctamente.");
+
             }
             catch(Exception ex)
             {

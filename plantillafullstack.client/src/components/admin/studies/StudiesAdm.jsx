@@ -115,7 +115,21 @@ const StudiesAdm = () => {
           study={editingStudy} // Paso el estudio dependiendo si es curso o facultad
           showSubjects={activeTab === STY_ACADEMICO} //Si ambos son 1
           onClose={() => setEditingStudy(null)}
-          onSave={handleSave}
+          onSave={async (formData) => {
+            try {
+              const response = await axiosInstance.put(
+                `studies/studiesAdm/updStudy`,
+                formData,
+              );
+              fetchStudies();
+              alertSuccess("Se actualizo el proyecto exitosamente");
+            } catch (err) {
+              console.error(
+                "Error al actualizar el proyecto",
+                err.response?.data,
+              );
+            }
+          }}
         />
       )}
 
@@ -132,7 +146,7 @@ const StudiesAdm = () => {
               alertSuccess("Se agrego el proyecto exitosamente");
             } catch (err) {
               console.error(
-                "Error al actualizar el proyecto",
+                "Error al agregar el proyecto",
                 err.response?.data,
               );
             }

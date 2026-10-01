@@ -2,6 +2,7 @@ namespace PlantillaFullstack.Server.DTOs
 {
     public class StudyAddDto
     {
+        public int StdId { get; set; }
         public int StdStyId { get; set; }
 
         public string? StdTitle { get; set; }

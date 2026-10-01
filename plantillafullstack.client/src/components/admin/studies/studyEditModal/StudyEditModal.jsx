@@ -8,6 +8,7 @@ import { formatDateForInput } from "../../../../utils/date";
 
 const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
   const [formEditStudy, setFormEditStudy] = useState({
+    StdId: study.stD_ID,
     StdStyId: study.stD_STY_ID,
     StdTitle: study.stD_TITLE,
     StdDesc: study.stD_DESCRIPTION,
@@ -41,6 +42,13 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
     setFormEditStudy({ ...formEditStudy, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formEditStudy);
+    onSave(formEditStudy);
+  };
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -48,15 +56,11 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           <div className="col-8">
             <h3 className="text-white">Editar Estudio</h3>
           </div>
-          <div className="col-4 d-flex justify-content-center">
-            <div className="d-flex gap-2">
-              <button type="submit" className={`${styles.addButton}`}>
-                Actualizar
-              </button>
-            </div>
-          </div>
         </div>
-        <form className="container d-flex flex-column gap-3">
+        <form
+          className="container d-flex flex-column gap-3"
+          onSubmit={handleSubmit}
+        >
           <div className="row">
             <div className="col-8">
               <label className="text-white">Título</label>
@@ -158,13 +162,44 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
               </div>
             </div>
           )}
+          <div className="col-12 d-flex justify-content-end">
+            <div className="d-flex gap-2">
+              <button type="submit" className={`${styles.addButton}`}>
+                Actualizar
+              </button>
+            </div>
+          </div>
         </form>
 
-        {showSubjects && assignatures.length > 0 && (
-          showAsgBtn != true ? <button type="button" className={styles.addButton} onClick={ ()=> setShowAsgBtn(true) }>Ver Asignaturas</button> : ''
-        )}
+        {showSubjects &&
+          assignatures.length == 0 &&
+          (showAsgBtn != true ? (
+            <button
+              type="button"
+              className={styles.addButton}
+              onClick={() => setAsgAddModal(true)}
+            >
+              Agregar Asignatura
+            </button>
+          ) : (
+            ""
+          ))}
 
-        {showSubjects && assignatures.length > 0 && showAsgBtn && ( 
+        {showSubjects &&
+          assignatures.length > 0 &&
+          (showAsgBtn != true ? (
+            <button
+              type="button"
+              className={styles.addButton}
+              onClick={() => setShowAsgBtn(true)}
+            >
+              Ver Asignaturas
+            </button>
+          ) : (
+            ""
+          ))}
+
+        {showSubjects && assignatures.length > 0 && showAsgBtn && (
           <section className={styles.sectionAsgContainer}>
             <div className="d-flex justify-content-between align-items-center">
               <h3 className="text-white">Asignaturas</h3>
