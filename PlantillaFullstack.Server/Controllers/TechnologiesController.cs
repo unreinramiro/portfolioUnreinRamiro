@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PlantillaFullstack.Server.Models;
 using PlantillaFullstack.Server.Data;
 using PlantillaFullstack.Server.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlantillaFullstack.Server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class TechnologiesController : ControllerBase
@@ -18,6 +20,7 @@ namespace PlantillaFullstack.Server.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllTechnologies()
         {
@@ -41,6 +44,7 @@ namespace PlantillaFullstack.Server.Controllers
             return Ok(technology);
         }
 
+        [AllowAnonymous]
         [HttpGet("techAdm/{id}")]
         public IActionResult GetTechsAdm(int id)
         {

@@ -3,9 +3,11 @@ using PlantillaFullstack.Server.Models;
 using PlantillaFullstack.Server.Data;
 using PlantillaFullstack.Server.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlantillaFullstack.Server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class AssignaturesController : ControllerBase
@@ -17,6 +19,7 @@ namespace PlantillaFullstack.Server.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetAcademicAssignatures(int id)
         {
