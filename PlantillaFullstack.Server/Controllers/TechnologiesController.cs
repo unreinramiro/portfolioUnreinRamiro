@@ -40,5 +40,36 @@ namespace PlantillaFullstack.Server.Controllers
 
             return Ok(technology);
         }
+
+        [HttpGet("techAdm/{id}")]
+        public IActionResult GetTechsAdm(int id)
+        {
+            var front = _context.Technologies
+                    .Where(f => f.TEC_TCY_ID == 1)
+                    .ToList();
+
+            if (id == 2)
+            {
+                var back = _context.Technologies
+                    .Where(b => b.TEC_TCY_ID == 2)
+                    .ToList();
+
+                return Ok(back);
+            }else if (id == 3)
+            {
+                var bd = _context.Technologies
+                    .Where(bd => bd.TEC_TCY_ID == 3)
+                    .ToList();
+                return Ok(bd);
+            }else if (id == 4)
+            {
+                var tool = _context.Technologies
+                    .Where(t => t.TEC_TCY_ID == 4)
+                    .ToList();
+                return Ok(tool);
+            }
+
+            return Ok(front);
+        }
     }
 }

@@ -35,12 +35,12 @@ const StudiesAdm = () => {
     if (!result.isConfirmed) return;
 
     try {
-      await axiosInstance.delete(`studies/${id}`);
+      await axiosInstance.delete(`studies/studiesAdm/delStudy/${id}`);
       fetchStudies();
       alertSuccess("Eliminado correctamente");
     } catch (err) {
-      console.error("Error al eliminar", err);
-      alertError("No se pudo eliminar");
+      console.error("Error al eliminar el estudio", err);
+      alertError("No se pudo eliminar el estudio");
     }
   };
 
@@ -143,10 +143,10 @@ const StudiesAdm = () => {
                 formData,
               );
               fetchStudies();
-              alertSuccess("Se agrego el proyecto exitosamente");
+              alertSuccess("Se agrego el estudio exitosamente");
             } catch (err) {
               console.error(
-                "Error al agregar el proyecto",
+                "Error al agregar el estudio",
                 err.response?.data,
               );
             }

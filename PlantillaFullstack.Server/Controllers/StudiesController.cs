@@ -114,5 +114,28 @@ namespace PlantillaFullstack.Server.Controllers
                 return StatusCode(500, "Hubo un error al insertar un nuevo estudio.");
             }
         }
+
+        [HttpDelete("studiesAdm/delStudy/{id}")]
+        public async Task<IActionResult> DeleteStudy(int id)
+        {
+            try
+            {
+                var study = await _context.Studies
+                                 .FirstOrDefaultAsync(s => s.STD_ID == id);
+
+                if (study == null) return NotFound("No se encontor el estudio a eliminar");
+
+                _context.Studies.Remove(study);
+
+                await _context.SaveChangesAsync();
+
+                return Ok("Se elimino el estudio correctamente");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar un estudio: {ex.Message}");
+                return StatusCode(500, "Hubo un error al eliminar un estudio.");
+            }
+        }
     }
 }
