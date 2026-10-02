@@ -1,0 +1,120 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.TechAddModal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    background-color: #111;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.TechAddModal::-webkit-scrollbar {
+    width: 4px;
+}
+
+.TechAddModal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.TechAddModal::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.TechAddModal::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.TechAddModal h3 {
+    letter-spacing: 2px;
+    font-weight: 200;
+    font-size: 1.6rem;
+}
+
+.TechAddModal label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.input {
+    width: 100%;
+    background-color: #1a1a1a;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
+.input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.cancelBtn,
+.saveBtn {
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.cancelBtn {
+    background-color: transparent;
+    color: #fff;
+}
+
+.saveBtn {
+    background-color: #fff;
+    color: #111;
+    border-color: #fff;
+}
+
+.deleteBtn{
+    background-color: #d62121;
+    color: #111;
+    border-color: #fff;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.deleteIcon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 14px;
+    color: #e2685f;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.deleteIcon:hover {
+    color: #ff8078;
+}

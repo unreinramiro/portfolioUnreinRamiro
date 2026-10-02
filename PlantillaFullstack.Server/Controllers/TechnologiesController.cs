@@ -71,5 +71,51 @@ namespace PlantillaFullstack.Server.Controllers
 
             return Ok(front);
         }
+
+        [HttpPost("techAdm/addTech")]
+        public async Task<IActionResult> AddTechnology([FromBody] TechnologyDto dto)
+        {
+            try
+            {
+                var tec = new Technology
+                {
+                    TEC_TCY_ID = dto.TecTcyId,
+                    TEC_NAME = dto.TecName
+                };
+
+                _context.Technologies.Add(tec);
+                await _context.SaveChangesAsync();
+
+                return Ok(tec);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al insertar un estudio: {ex.Message}");
+                return StatusCode(500, "Hubo un error al insertar un nuevo estudio.");
+            }
+        }
+
+        [HttpDelete("techAdm/deleteTech/{id}")]
+        public async Task<IActionResult> DeleteTechnology(int id)
+        {
+            try
+            {
+                var tec = await _context.Technologies
+                                 .FirstOrDefaultAsync(t => t.TEC_ID == id);
+
+                if (tec == null) return NotFound("No se encontro la tecnologia a eliminar");
+
+                _context.Technologies.Remove(tec);
+
+                await _context.SaveChangesAsync();
+
+                return Ok("Se elimino la tecnologia correctamente");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar la tecnologia: {ex.Message}");
+                return StatusCode(500, "Hubo un error al eliminar la tecnologia.");
+            }
+        }
     }
 }
