@@ -26,12 +26,18 @@
 }
 
 .addButton {
+    padding: 10px 30px;
     background-color: transparent;
-    border: 0.5px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    border-radius: 6px;
-    padding: 8px 16px;
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 8px;
+    letter-spacing: 2px;
+    font-size: .9rem;
     cursor: pointer;
+    transition: all .3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .addButton:hover {

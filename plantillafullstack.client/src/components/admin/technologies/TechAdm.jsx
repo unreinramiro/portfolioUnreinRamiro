@@ -56,7 +56,7 @@ const TechAdm = () => {
         </li>
       </ul>
       <div className="row d-flex justify-content-end">
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end mb-2">
           <button className={styles.addButton}>
             <FaPlus />
             Agregar
