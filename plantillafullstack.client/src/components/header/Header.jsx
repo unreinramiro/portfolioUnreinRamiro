@@ -25,6 +25,7 @@ function Header() {
     if (!result.isConfirmed) return;
 
     localStorage.removeItem("token");
+    localStorage.removeItem("expiresAt");
     navigate("/home");
   };
 

@@ -54,9 +54,9 @@ const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
     selectedTechIds.forEach((id) => formData.append("Technologies", id));
 
     if (selectedTechIds.length === 0) {
-    alertError('El proyecto debe tener al menos una tecnología.');
-    return;
-}
+      alertError("El proyecto debe tener al menos una tecnología.");
+      return;
+    }
 
     Object.entries(imageFiles).forEach(([key, file]) => {
       if (file) {
@@ -92,7 +92,9 @@ const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
   const handleDelete = (id) => {
     console.log(id);
     onDelete(id);
-  }
+  };
+
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5231";
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -116,7 +118,7 @@ const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
                         src={
                           images[key]?.startsWith("blob:")
                             ? images[key]
-                            : `http://localhost:5231/images/${images[key]}`
+                            : `${API_URL}/images/${images[key]}`
                         }
                         alt={`img${i + 1}`}
                       />

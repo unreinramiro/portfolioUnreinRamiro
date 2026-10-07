@@ -17,6 +17,7 @@ const ProyectDetail = ({ selectedProy, onClose }) => {
             img1={selectedProy.proImg1}
             img2={selectedProy.proImg2}
             img3={selectedProy.proImg3}
+            img4={selectedProy.proImg4}
           />
         </div>
         <div className="container d-flex flex-column gap-3">

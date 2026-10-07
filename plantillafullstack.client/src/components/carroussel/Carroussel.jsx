@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./Carroussel.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-const Carroussel = ({ img1, img2, img3 }) => {
+const Carroussel = ({ img1, img2, img3, img4 }) => {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5231";
+
   return (
     <div
       id="carouselExampleFade"
@@ -11,24 +13,33 @@ const Carroussel = ({ img1, img2, img3 }) => {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src={`http://localhost:5231/images/${img1}`}
+            src={`${API_URL}/images/${img1}`}
             className={`d-block w-100 ${styles.carouselImage}`}
             alt="..."
           />
         </div>
-        {img2 &&(
-            <div className="carousel-item">
+        {img2 && (
+          <div className="carousel-item">
             <img
-                src={`http://localhost:5231/images/${img2}`}
-                className={`d-block w-100 ${styles.carouselImage}`}
-                alt="..."
+              src={`${API_URL}/images/${img2}`}
+              className={`d-block w-100 ${styles.carouselImage}`}
+              alt="..."
             />
-            </div>
+          </div>
         )}
         {img3 && (
           <div className="carousel-item">
             <img
-              src={`http://localhost:5231/images/${img3}`}
+              src={`${API_URL}/images/${img3}`}
+              className={`d-block w-100 ${styles.carouselImage}`}
+              alt="..."
+            />
+          </div>
+        )}
+        {img4 && (
+          <div className="carousel-item">
+            <img
+              src={`${API_URL}/images/${img4}`}
               className={`d-block w-100 ${styles.carouselImage}`}
               alt="..."
             />

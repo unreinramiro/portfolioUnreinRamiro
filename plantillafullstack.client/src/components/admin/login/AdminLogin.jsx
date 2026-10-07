@@ -29,6 +29,7 @@ const AdminLogin = () => {
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("expiresAt", response.data.expiresAt);
         navigate("/admin/dashboard");
       }
     } catch (err) {

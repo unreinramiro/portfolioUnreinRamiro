@@ -4,13 +4,15 @@ import imgProy1 from "../../../assets/aritzProyect.png";
 import { MdOutlineImageNotSupported } from "react-icons/md";
 
 const ProyectCard = ({ onShowModal, proyect, textButton }) => {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5231";
+
   return (
     <div className={styles.proyectCardContainer}>
       <div className="col-12 d-flex flex-column gap-3 justify-content-between p-2">
         <div className={styles.imageProyectContainer}>
           {proyect.proImg1 ? (
             <img
-              src={`http://localhost:5231/images/${proyect.proImg1}`}
+              src={`${API_URL}/images/${proyect.proImg1}`}
               alt="proyect1"
             />
           ) : (
