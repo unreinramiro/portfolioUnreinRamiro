@@ -42,8 +42,8 @@ const StudyAddModal = ({ onClose, onSave }) => {
           className="container d-flex flex-column gap-3"
           onSubmit={handleSubmit}
         >
-          <div className="row">
-            <div className="col-8">
+          <div className="row d-flex gap-3">
+            <div className="col-md-8">
               <label className="text-white">Título</label>
               <input
                 type="text"
@@ -52,7 +52,7 @@ const StudyAddModal = ({ onClose, onSave }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="col-4">
+            <div className="col-md-4">
               <label className="text-white">Tipo de estudio</label>
               <select
                 name="StdStyId"
@@ -92,8 +92,8 @@ const StudyAddModal = ({ onClose, onSave }) => {
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-6">
+          <div className="row d-flex gap-3">
+            <div className="col-md-6">
               <label className="text-white">Fecha de inicio</label>
               <input
                 type="date"
@@ -102,7 +102,7 @@ const StudyAddModal = ({ onClose, onSave }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="col-6">
+            <div className="col-md-6">
               <label className="text-white">Fecha de fin</label>
               <input
                 type="date"

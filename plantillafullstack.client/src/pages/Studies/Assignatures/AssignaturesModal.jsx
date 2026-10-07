@@ -13,7 +13,7 @@ const AssignaturesModal = ({ onClose }) => {
         
         const fetchAssignatures = async () => {
             try {
-                const response = await axiosInstance.get('assignatures'); // Realiza una solicitud GET a /api/products
+                const response = await axiosInstance.get(`assignatures/${1}`); // Realiza una solicitud GET a /api/products
                 setAssignatures(response.data); // Actualiza el estado con los datos obtenidos
                 setFiltered(response.data);
                 console.log('Asignaturas obtenidas:', response.data);
@@ -76,7 +76,7 @@ const AssignaturesModal = ({ onClose }) => {
                             className='row mt-4'
                             key={semester}
                         >
-                            <h6 className='text-end'>Semestre {semester}</h6>
+                            <h6 className='text-end text-light'>Semestre {semester}</h6>
                             <div className='col-12 d-flex flex-column gap-3'>
                                 {assignatures.map(as => (
                                     <AssignatureCard 

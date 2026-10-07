@@ -72,3 +72,16 @@
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.5);
 }
+
+@media(max-width: 730px){
+    .studyItem{
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .addButton{
+        font-size: .7rem;
+        padding: 10px;
+    }
+}

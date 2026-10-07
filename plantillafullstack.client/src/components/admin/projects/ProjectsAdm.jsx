@@ -49,14 +49,14 @@ const ProjectsAdm = () => {
   };
 
   const handleEditProject = async (proyect) => {
-    const res = await axiosInstance.get(`technologies/${proyect.prO_ID}`);
+    const res = await axiosInstance.get(`technologies/${proyect.proId}`);
     setEditingProject({ ...proyect, technologies: res.data });
   };
 
   const handleSearch = (query) => {
     setFiltered(
       projects.filter((pr) =>
-        pr.prO_TITLE.toLowerCase().includes(query.toLowerCase()),
+        pr.proTitle.toLowerCase().includes(query.toLowerCase()),
       ),
     );
   };
@@ -111,7 +111,7 @@ const ProjectsAdm = () => {
           onSave={async (formData) => {
             try {
               await axiosInstance.put(
-                `projects/${editingProject.prO_ID}`,
+                `projects/${editingProject.proId}`,
                 formData,
                 {
                   headers: { "Content-Type": undefined },

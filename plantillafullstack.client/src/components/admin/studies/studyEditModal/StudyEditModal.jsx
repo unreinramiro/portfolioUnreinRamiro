@@ -75,7 +75,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className="row">
-          <div className="col-8">
+          <div className="col-12">
             <h3 className="text-white">Editar Estudio</h3>
           </div>
         </div>
@@ -83,8 +83,8 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           className="container d-flex flex-column gap-3"
           onSubmit={handleSubmit}
         >
-          <div className="row">
-            <div className="col-8">
+          <div className="row d-flex gx-3">
+            <div className="col-sm-8">
               <label className="text-white">Título</label>
               <input
                 type="text"
@@ -94,7 +94,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="col-4">
+            <div className="col-sm-4">
               <label className="text-white">Tipo de estudio</label>
               <select
                 className={styles.input}
@@ -161,8 +161,8 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
           </div>
 
           {study.stD_STY_ID !== 1 && (
-            <div className="row">
-              <div className="col-8">
+            <div className="row d-flex gap-3">
+              <div className="col-md-8">
                 <label className="text-white">URL Certificado</label>
                 <input
                   type="text"
@@ -172,7 +172,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="col-4">
+              <div className="col-md-4">
                 <label className="text-white">Cantidad de horas:</label>
                 <input
                   type="number"
@@ -185,7 +185,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
             </div>
           )}
           <div className="col-12 d-flex justify-content-end">
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 w-100">
               <button type="submit" className={`${styles.addButton}`}>
                 Actualizar
               </button>
@@ -223,7 +223,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
 
         {showSubjects && assignatures.length > 0 && showAsgBtn && (
           <section className={styles.sectionAsgContainer}>
-            <div className="d-flex justify-content-between align-items-center">
+            <div className={styles.sectionSubAsgContainer}>
               <h3 className="text-white">Asignaturas</h3>
               <button
                 className={styles.addButton}

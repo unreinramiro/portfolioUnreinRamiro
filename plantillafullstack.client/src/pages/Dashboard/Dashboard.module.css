@@ -108,8 +108,6 @@ h3{
     border-radius: 4px;
 }
 
-/* Ajustes responsive */
-
 @media (min-width: 992px) {
     .titleContainer{
         padding: 20% 20px;
@@ -146,5 +144,20 @@ h3{
     .closeSessionButton{
         text-align: center;
         border-left: none;
+    }
+}
+
+@media(max-width: 730px){
+    .closeSessionContainer{
+        display: none !important;
+    }
+
+    .dashboardContainer{
+        width: min(1400px, 95%);
+        height: 100vh;
+        background-color: #0a0a0a;
+        display: flex;
+        border-radius: 12px;
+        overflow: hidden;
     }
 }

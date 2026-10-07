@@ -44,7 +44,26 @@ namespace PlantillaFullstack.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProjects()
         {
-            var projects = _context.Projects.ToList();
+            var projects = await _context.Projects
+                        .Select(p => new
+                        {
+                            ProId = p.PRO_ID,
+                            ProTitle = p.PRO_TITLE,
+                            ProDescription = p.PRO_DESCRIPTION,
+                            ProGithubUrl = p.PRO_GITHUB_URL,
+                            ProProductionUrl = p.PRO_PRODUCTION_URL,
+                            ProImg1 = p.PRO_IMG_1,
+                            ProImg2 = p.PRO_IMG_2,
+                            ProImg3 = p.PRO_IMG_3,
+                            ProImg4 = p.PRO_IMG_4,
+                            
+                            Technologies = p.ProjectTechnologies.Select(pt => new
+                            {
+                                TecId = pt.Technology.TEC_ID,
+                                TecName = pt.Technology.TEC_NAME
+                            }).ToList()
+                        })
+                        .ToListAsync();
 
             return Ok(projects);     
         }

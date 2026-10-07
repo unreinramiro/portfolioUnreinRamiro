@@ -62,8 +62,8 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-6">
+          <div className="row d-flex gx-3">
+            <div className="col-md-6">
               <label className="text-white">Nota 1er Parcial</label>
               <input
                 type="number"
@@ -73,7 +73,7 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
                 onChange={handleChange}
               />
             </div>
-            <div className="col-6">
+            <div className="col-md-6">
               <label className="text-white">Nota 2do Parcial</label>
               <input
                 type="number"
@@ -85,8 +85,8 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-4">
+          <div className="row d-flex gx-3">
+            <div className="col-md-4">
               <label className="text-white">Anio</label>
               <select
                 className={styles.input}
@@ -98,7 +98,7 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
                 <option value="2">2</option>
               </select>
             </div>
-            <div className="col-4">
+            <div className="col-md-4">
               <label className="text-white">Semestre</label>
               <select
                 className={styles.input}
@@ -110,7 +110,7 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
                 <option>2</option>
               </select>
             </div>
-            <div className="col-4">
+            <div className="col-md-4">
               <label className="text-white">Estado</label>
               <select
                 className={styles.input}
@@ -125,7 +125,7 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
             </div>
           </div>
 
-          <div className="row">
+          <div className="row d-flex gx-3">
             <div className="col">
               <label className="text-white">Promocionada</label>
               <select
@@ -140,11 +140,8 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
             </div>
           </div>
 
-          <div className="row mt-2">
-            <div className="col-12 d-flex justify-content-between gap-2">
-              <button type="button" className={styles.deleteBtn} onClick={() => onDelete(asgFormData.AsgId)}>
-                Eliminar
-              </button>
+          <div className="row mt-2 d-flex">
+            <div className="col-12 d-flex justify-content-between gap-2 flex-wrap">
               <div className="d-flex gap-2">
                 <button
                   type="button"
@@ -157,6 +154,9 @@ const AssignatureEditModal = ({ assignature, studyId, onClose, onSave, onDelete 
                   Guardar
                 </button>
               </div>
+              <button type="button" className={styles.deleteBtn} onClick={() => onDelete(asgFormData.AsgId)}>
+                Eliminar
+              </button>
             </div>
           </div>
         </form>

@@ -12,17 +12,17 @@ const ProjectEditModal = ({ project, onClose, onSave, onDelete }) => {
   );
 
   const [form, setForm] = useState({
-    ProTitle: project.prO_TITLE,
-    ProDescription: project.prO_DESCRIPTION,
-    ProGithubUrl: project.prO_GITHUB_URL,
-    ProProductionUrl: project.prO_PRODUCTION_URL,
+    ProTitle: project.proTitle,
+    ProDescription: project.proDescription,
+    ProGithubUrl: project.proGithubUrl,
+    ProProductionUrl: project.proProductionUrl,
   });
 
   const [images, setImages] = useState({
-    ProImg1: project.prO_IMG_1,
-    ProImg2: project.prO_IMG_2,
-    ProImg3: project.prO_IMG_3,
-    ProImg4: project.prO_IMG_4,
+    ProImg1: project.proImg1,
+    ProImg2: project.proImg2,
+    ProImg3: project.proImg3,
+    ProImg4: project.proImg4,
   });
 
   const [imageFiles, setImageFiles] = useState({});

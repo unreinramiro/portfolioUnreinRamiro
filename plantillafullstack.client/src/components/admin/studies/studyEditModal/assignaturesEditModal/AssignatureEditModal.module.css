@@ -135,3 +135,19 @@ select.input {
 .deleteIcon:hover {
     color: #ff8078;
 }
+
+
+@media(max-width: 400px){
+    .deleteBtn{
+        width: 100%;
+    }
+
+    .cancelBtn{
+        width: 100%;
+    }
+
+    .saveBtn{
+        width: 100%;
+    }
+
+}

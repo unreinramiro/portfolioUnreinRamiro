@@ -46,6 +46,7 @@
     letter-spacing: 2px;
     font-weight: 200;
     font-size: 1.6rem;
+    padding: 13px;
 }
 
 .modal label {
@@ -102,6 +103,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 12px;
+}
+
+.sectionSubAsgContainer{
+    display: flex;
+    justify-content: space-between;
 }
 
 .assignatureList {
@@ -162,4 +169,14 @@
 
 .addButton:hover {
     border-color: #fff;
+}
+
+@media(max-width: 730px){
+    .sectionSubAsgContainer{
+        flex-direction: column;
+    }
+
+    .addButton{
+        width: 100%;
+    }
 }

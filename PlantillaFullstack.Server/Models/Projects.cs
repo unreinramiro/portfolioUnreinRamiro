@@ -33,5 +33,7 @@ namespace PlantillaFullstack.Server.Models
 
         [MaxLength(100)]
         public string? PRO_PRODUCTION_URL { get; set; }
+
+        public ICollection<ProjectTechnology> ProjectTechnologies { get; set; } = new List<ProjectTechnology>();
     }
 }

@@ -29,8 +29,16 @@
     cursor: pointer;
 }
 
+.header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .hyperLinksContainer{
     display: flex;
+    margin: 5px 0;
 }
 
 .hyperLinksContainer a{
@@ -39,6 +47,19 @@
 
 .hyperLinksContainer a:hover{
     opacity: 0.7;
+}
+
+.hyperLinksAdm{
+    display: flex;
+    border-left: 1px solid white;
+}
+
+.hyperLinksAdm a{
+    opacity: 50%;
+}
+
+.hyperLinksAdm a:hover{
+    opacity: 100%;
 }
 
 .iconBurgerCss{
@@ -58,4 +79,19 @@
         display: block;
     }
     
+    .responsive{
+        display: flex;
+    }
+
+    .headerContainer.responsive{
+        flex-direction: column;
+    }
+
+    .hyperLinksContainer.responsive{
+        flex-direction: column;
+    }
+
+    .hyperLinksAdm{
+        border-left: none;
+    }
 }

@@ -14,6 +14,12 @@ function Header() {
   const isLoginPage = location.pathname === "/admin/login";
   const isLoggedIn = !!localStorage.getItem("token");
 
+  const [showLinksResp, setShowLinksResp] = useState(false);
+
+  const toggleMenu = () => {
+    setShowLinksResp((prev) => !prev);
+  };
+
   const handleLogout = async () => {
     const result = await alertConfirm("¿Desea cerrar sesion?");
     if (!result.isConfirmed) return;
@@ -22,32 +28,43 @@ function Header() {
     navigate("/home");
   };
 
+  useEffect(() => {
+    setShowLinksResp(false);
+  }, [location.pathname]);
+
   return (
-    <div className={styles.headerContainer}>
+    <div
+      className={`${styles.headerContainer} ${showLinksResp ? styles.responsive : ""}`}
+    >
       <div className={styles.header}>
         {!isAdminRoute ? (
           <a href="#home">RAMIRO</a>
         ) : (
           <Link to="/home">RAMIRO</Link>
         )}
+        <div onClick={toggleMenu}>
+          <img
+            src={burgerIcon}
+            className={styles.iconBurgerCss}
+            style={{ width: "30px", height: "30px" }}
+          />
+        </div>
       </div>
-      <div>
-        <img
-          src={burgerIcon}
-          className={styles.iconBurgerCss}
-          style={{ width: "30px", height: "30px" }}
-        />
-      </div>
-      <div className={styles.hyperLinksContainer}>
+      <div
+        className={`${styles.hyperLinksContainer} ${showLinksResp ? styles.responsive : ""}`}
+      >
         {!isAdminRoute ? (
           <>
-            <a href="#aboutMe">About Me</a>
-            <a href="#studies">Studies</a>
-            <a href="#proyects">Projects</a>
+            <a onClick={toggleMenu} href="#aboutMe">About Me</a>
+            <a onClick={toggleMenu} href="#studies">Studies</a>
+            <a onClick={toggleMenu} href="#proyects">Projects</a>
             {isLoggedIn && (
-              <a className={styles.closeSession} onClick={handleLogout}>
-                Cerrar Sesión
-              </a>
+              <div className={styles.hyperLinksAdm}>
+                <Link to="admin/dashboard">Panel Adm</Link>
+                <a className={styles.closeSession} onClick={handleLogout}>
+                  Cerrar Sesión
+                </a>
+              </div>
             )}
           </>
         ) : (
