@@ -19,3 +19,8 @@
     border-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 15px rgba(252, 252, 252, 0.15);
 }
+
+.visibleTecs {
+    opacity: 1;
+    transform: translateY(0);
+}

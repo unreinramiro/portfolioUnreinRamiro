@@ -59,6 +59,7 @@ function Header() {
             <a onClick={toggleMenu} href="#aboutMe">About Me</a>
             <a onClick={toggleMenu} href="#studies">Studies</a>
             <a onClick={toggleMenu} href="#proyects">Projects</a>
+            <a onClick={toggleMenu} href="#tecs">Technologies</a>
             {isLoggedIn && (
               <div className={styles.hyperLinksAdm}>
                 <Link to="admin/dashboard">Panel Adm</Link>

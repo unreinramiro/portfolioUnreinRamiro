@@ -39,6 +39,8 @@
 .hyperLinksContainer{
     display: flex;
     margin: 5px 0;
+    width: 100%;
+    justify-content: end;
 }
 
 .hyperLinksContainer a{
