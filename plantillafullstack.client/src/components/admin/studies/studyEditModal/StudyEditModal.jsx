@@ -316,6 +316,7 @@ const StudyEditModal = ({ study, onClose, onSave, onDelete, showSubjects }) => {
                 `assignatures/${study.stD_ID}`,
               );
               setAssignatures(responseGet.data);
+              setAsgAddModal(false);
               alertSuccess("Se agrego la asignatura exitosamente");
             } catch (err) {
               console.error(

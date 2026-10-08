@@ -59,7 +59,7 @@ const Academic = () => {
           return (
             <div className="row justify-content-center" key={index}>
               <div
-                className={`col-12 col-md-10 ${styles.academicFormContainer}`}
+                className={`col-12 col-md-10 gap-3 ${styles.academicFormContainer}`}
               >
                 <h3 style={{ height: "10px", margin: "0" }}>UNIVERSITARIO</h3>
                 <hr></hr>
@@ -80,7 +80,7 @@ const Academic = () => {
                   </p>
                 </div>
                 <div className="d-flex mt-2">
-                  <p>{academic.stD_DESCRIPTION}</p>
+                  <p className="text-start">{academic.stD_DESCRIPTION}</p>
                 </div>
                 <hr style={{ height: "10px", margin: "0" }}></hr>
                 <a onClick={() => setShowModal(true)}>Ver Materias</a>
