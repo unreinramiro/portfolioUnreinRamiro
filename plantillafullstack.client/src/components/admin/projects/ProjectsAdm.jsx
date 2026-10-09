@@ -62,7 +62,7 @@ const ProjectsAdm = () => {
   };
 
   return (
-    <div className={`container`}>
+    <div className='container h-100'>
       <div className="row p-4 g-4">
         <div className="col-lg-9 col-sm-12 d-flex justify-content-center">
           <SearchBar onSearch={handleSearch} />

@@ -61,7 +61,7 @@ const StudiesAdm = () => {
   };
 
   return (
-    <div className="container h-100 p-5">
+    <div className="container h-100 p-4">
       <ul className={styles.tabs}>
         <li
           className={activeTab === STY_ACADEMICO ? styles.active : ""}

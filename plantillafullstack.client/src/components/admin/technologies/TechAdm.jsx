@@ -44,7 +44,7 @@ const TechAdm = () => {
   };
 
   return (
-    <div className="container h-100 p-5">
+    <div className="container p-3 p-md-5">
       <ul className={styles.tabs}>
         <li
           className={activeTabTech === TECH_FRONT ? styles.active : ""}

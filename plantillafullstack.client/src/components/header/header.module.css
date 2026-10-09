@@ -95,5 +95,7 @@
 
     .hyperLinksAdm{
         border-left: none;
+        flex-direction: column;
+        border-top: 1px solid white;
     }
 }

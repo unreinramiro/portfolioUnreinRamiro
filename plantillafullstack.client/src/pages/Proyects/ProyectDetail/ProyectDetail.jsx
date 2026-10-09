@@ -3,6 +3,7 @@ import styles from "./ProyectDetail.module.css";
 import Carroussel from "../../../components/carroussel/Carroussel";
 import githubIcon from "../../../assets/github.png";
 import productionIcon from "../../../assets/clapper.png";
+import cross from "../../../assets/cross.png";
 
 const ProyectDetail = ({ selectedProy, onClose }) => {
   return (
@@ -11,6 +12,12 @@ const ProyectDetail = ({ selectedProy, onClose }) => {
         className={styles.ProyectDetailModal}
         onClick={(e) => e.stopPropagation()} // evita cerrar al clickear dentro
       >
+        <img
+          src={cross}
+          className={styles.crossIcon}
+          onClick={onClose}
+          alt="Cerrar"
+        />
         <h3 className="text-white text-center">{selectedProy.proTitle}</h3>
         <div className={styles.containerImages}>
           <Carroussel
