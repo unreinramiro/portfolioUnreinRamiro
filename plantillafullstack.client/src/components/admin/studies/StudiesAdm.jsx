@@ -144,6 +144,7 @@ const StudiesAdm = () => {
               );
               fetchStudies();
               alertSuccess("Se agrego el estudio exitosamente");
+              setAddStudy(false);
             } catch (err) {
               console.error(
                 "Error al agregar el estudio",

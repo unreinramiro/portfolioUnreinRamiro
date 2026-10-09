@@ -109,6 +109,7 @@ const TechAdm = () => {
               );
               fetchTechs();
               alertSuccess("Se agrego la tecnologia correctamente!");
+              setShowTechAddModal(false);
             } catch (error) {
               alertError("No se pudo agregar la tecnologia");
               console.log("Error al agregar el estudio", err.response?.data);

@@ -18,7 +18,7 @@ const TechAddModal = ({ onClose, onSave }) => {
     let parsedValue = value;
 
     if(name == "TecTcyId"){
-        parsedValue = ParseInt(value);
+        parsedValue = parseInt(value, 10);
     }
     setFormTech((prev) => ({
         ...prev,

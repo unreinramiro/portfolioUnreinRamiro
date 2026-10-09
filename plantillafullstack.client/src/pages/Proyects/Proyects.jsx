@@ -8,6 +8,7 @@ const Proyects = () => {
   const [isVisibleProy, setIsVisibleProy] = useState(false);
   const sectionProyectsRef = useRef(null);
   const [proyects, setProyects] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   //Parte modal proyect
   const [showModalProy, setShowModalProy] = useState(false);
@@ -23,6 +24,7 @@ const Proyects = () => {
       const response = await axiosInstance.get("projects");
       console.log(response.data);
       setProyects(response.data);
+      setLoading(false);
     } catch (err) {
       console.error(
         "Error al traer los projectos:",
@@ -71,18 +73,24 @@ const Proyects = () => {
         <div
           className={`${styles.proyectsContainer} row justify-content-center g-3`}
         >
-          {proyects.map((proyect, index) => (
-            <div
-              className={`${styles.proyectCard} col-12 col-sm-6 col-lg-4`}
-              key={index}
-            >
-              <ProyectCard
-                onShowModal={handleShowModal}
-                proyect={proyect}
-                textButton={"Ver detalle"}
-              />
+          {isLoading ? (
+            <div className="spinner-border text-light" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
-          ))}
+          ) : (
+            proyects.map((proyect, index) => (
+              <div
+                className={`${styles.proyectCard} col-12 col-sm-6 col-lg-4`}
+                key={index}
+              >
+                <ProyectCard
+                  onShowModal={handleShowModal}
+                  proyect={proyect}
+                  textButton={"Ver detalle"}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </section>
