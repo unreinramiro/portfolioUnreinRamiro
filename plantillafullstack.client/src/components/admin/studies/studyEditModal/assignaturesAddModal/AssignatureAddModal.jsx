@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./AssignatureAddModal.module.css";
 
 const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
   const [asgFormData, setAsgFormData] = useState({
     AsgStdId: studyId,
     AsgTitle: "",
-    AsgFirstNote: 1,
-    AsgSecondNote: 1,
+    AsgFirstNote: "",
+    AsgSecondNote: "",
     AsgPromotion: false,
     AsgSemester: 1,
     AsgStatus: "Iniciada",
@@ -14,15 +14,29 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
   });
 
   const handleChange = (e) => {
-    setAsgFormData({ ...asgFormData, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target;
+    let parsedValue = value;
+
+    if (type === "number") {
+      parsedValue = value === "" ? null : parseFloat(value);
+    } else if (name === "AsgPromotion") {
+      parsedValue = value === "true";
+    } else if (name === "AsgSemester" || name === "AsgYear") {
+      parsedValue = parseInt(value, 10);
+    }
+
+    setAsgFormData((prev) => ({
+      ...prev,
+      [name]: parsedValue,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(asgFormData);
     onSave(asgFormData);
   };
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.AsgAddModal} onClick={(e) => e.stopPropagation()}>
@@ -38,8 +52,10 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <input
                   type="text"
                   name="AsgTitle"
+                  value={asgFormData.AsgTitle}
                   className={styles.input}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -48,7 +64,9 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <label className="text-white">Nota 1</label>
                 <input
                   type="number"
+                  step="0.1"
                   name="AsgFirstNote"
+                  value={asgFormData.AsgFirstNote ?? ""}
                   className={styles.input}
                   onChange={handleChange}
                 />
@@ -57,7 +75,9 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <label className="text-white">Nota 2</label>
                 <input
                   type="number"
+                  step="0.1"
                   name="AsgSecondNote"
+                  value={asgFormData.AsgSecondNote ?? ""}
                   className={styles.input}
                   onChange={handleChange}
                 />
@@ -69,10 +89,11 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <select
                   className={styles.input}
                   name="AsgSemester"
+                  value={asgFormData.AsgSemester}
                   onChange={handleChange}
                 >
-                  <option>1</option>
-                  <option>2</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
                 </select>
               </div>
               <div className="col-6">
@@ -80,10 +101,11 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <select
                   className={styles.input}
                   name="AsgYear"
+                  value={asgFormData.AsgYear}
                   onChange={handleChange}
                 >
-                  <option>1</option>
-                  <option>2</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
                 </select>
               </div>
             </div>
@@ -93,10 +115,11 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <select
                   className={styles.input}
                   name="AsgPromotion"
+                  value={asgFormData.AsgPromotion ? "true" : "false"}
                   onChange={handleChange}
                 >
-                  <option>Si</option>
-                  <option>No</option>
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
                 </select>
               </div>
               <div className="col-6">
@@ -104,12 +127,13 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 <select
                   className={styles.input}
                   name="AsgStatus"
+                  value={asgFormData.AsgStatus}
                   onChange={handleChange}
                 >
-                  <option>Iniciada</option>
-                  <option>En curso</option>
-                  <option>Finalizada</option>
-                  <option>Sin iniciar</option>
+                  <option value="Iniciada">Iniciada</option>
+                  <option value="En curso">En curso</option>
+                  <option value="Finalizada">Finalizada</option>
+                  <option value="Sin iniciar">Sin iniciar</option>
                 </select>
               </div>
             </div>
@@ -124,7 +148,7 @@ const AssignatureAddModal = ({ onClose, onSave, studyId }) => {
                 >
                   Cancelar
                 </button>
-                <button type="submit" className={`${styles.addButton}`}>
+                <button type="submit" className={styles.addButton}>
                   Agregar
                 </button>
               </div>
