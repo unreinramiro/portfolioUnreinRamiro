@@ -56,10 +56,10 @@ function Header() {
       >
         {!isAdminRoute ? (
           <>
-            <a onClick={toggleMenu} href="#aboutMe">About Me</a>
-            <a onClick={toggleMenu} href="#studies">Studies</a>
-            <a onClick={toggleMenu} href="#proyects">Projects</a>
-            <a onClick={toggleMenu} href="#tecs">Technologies</a>
+            <a onClick={toggleMenu} href="#aboutMe">Sobre Mi</a>
+            <a onClick={toggleMenu} href="#studies">Estudios</a>
+            <a onClick={toggleMenu} href="#proyects">Proyectos</a>
+            <a onClick={toggleMenu} href="#tecs">Tecnologias</a>
             {isLoggedIn && (
               <div className={styles.hyperLinksAdm}>
                 <Link to="admin/dashboard">Panel Adm</Link>

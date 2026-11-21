@@ -14,8 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var dataDir = Path.Combine(
+    Environment.GetEnvironmentVariable("HOME") ?? builder.Environment.ContentRootPath,
+    "data");
+Directory.CreateDirectory(dataDir);
+var dbPath = Path.Combine(dataDir, "portfolio.db");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 // Configuración de Autenticación con JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
