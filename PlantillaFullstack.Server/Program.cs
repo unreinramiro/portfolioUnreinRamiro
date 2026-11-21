@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders; // 👈 Requerido para PhysicalFileProvider
 using Microsoft.IdentityModel.Tokens;
 using PlantillaFullstack.Server.Data;
-using System.Text;
 using PlantillaFullstack.Server.Services;
+using System.IO; // 👈 Requerido para Path y Directory
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +47,22 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 var app = builder.Build();
 
 app.UseDefaultFiles();
-app.UseStaticFiles();
+app.UseStaticFiles(); // Habilita wwwroot estándar
+
+// 🟢 CONFIGURACIÓN PARA SERVIR LA CARPETA DE IMÁGENES DENTRO DE /api/images
+var imagesPath = Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "images");
+
+// Asegurar que el directorio exista en Azure App Service si está recién creado
+if (!Directory.Exists(imagesPath))
+{
+    Directory.CreateDirectory(imagesPath);
+}
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(imagesPath),
+    RequestPath = "/api/images"
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

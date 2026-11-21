@@ -68,3 +68,16 @@
     border-color: #fff;
     box-shadow: 0 0 12px rgba(255,255,255,.12);
 }
+
+@media(max-width: 730px){
+    .studyItem{
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .addButton{
+        font-size: .7rem;
+        padding: 10px;
+    }
+}

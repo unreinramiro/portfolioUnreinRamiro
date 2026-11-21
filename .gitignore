@@ -6,6 +6,11 @@
 # dotenv files
 .env
 
+# Ignorar configuraciones con datos sensibles
+appsettings.Development.json
+appsettings.Production.json
+appsettings.json
+
 # User-specific files
 *.rsuser
 *.suo

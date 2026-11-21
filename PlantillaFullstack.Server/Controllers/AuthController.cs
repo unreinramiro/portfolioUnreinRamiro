@@ -21,10 +21,16 @@ namespace PlantillaFullstack.Server.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDto dto)
         {
-            if (dto.Username == "admin" && dto.Password == "FiatUnoFire13Mod2009VendoPorBora")
+            var adminUser = _configuration["AdminCredentials:Username"];
+            var adminPass = _configuration["AdminCredentials:Password"];
+
+            if (dto.Username == adminUser && dto.Password == adminPass)
             {
                 var token = GenerarJwtToken(dto.Username);
-                return Ok(new { token });
+                var expireMinutes = double.Parse(_configuration["Jwt:ExpireMinutes"]!);
+                var expiresAt = DateTime.UtcNow.AddMinutes(expireMinutes);
+
+                return Ok(new { token, expiresAt });
             }
 
             return Unauthorized("Usuario o contraseña incorrectos.");
