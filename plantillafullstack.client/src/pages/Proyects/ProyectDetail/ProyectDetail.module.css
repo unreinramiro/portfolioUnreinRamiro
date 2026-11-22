@@ -29,6 +29,11 @@
     font-size: 1.6rem;
 }
 
+.ProyectDetailModal p{
+    text-align: start;
+    font-size: 1rem;
+}
+
 .ProyectDetailModal {
     /* tus estilos actuales */
     overflow-y: auto;

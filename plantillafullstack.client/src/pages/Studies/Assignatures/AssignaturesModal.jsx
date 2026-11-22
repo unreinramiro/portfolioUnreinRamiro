@@ -4,6 +4,7 @@ import SearchBar from "../../../components/SearchBar/SearchBar";
 import AssignatureCard from "./AssignatureCard";
 import axiosInstance from "../../../services/api";
 import filterImg from "../../../assets/filter.png";
+import cross from "../../../assets/cross.png";
 
 const AssignaturesModal = ({ onClose }) => {
   const [assignatures, setAssignatures] = useState([]);
@@ -104,8 +105,14 @@ const AssignaturesModal = ({ onClose }) => {
         className={styles.AssignaturesModal}
         onClick={(e) => e.stopPropagation()}
       >
+        <img
+          src={cross}
+          className={styles.crossIcon}
+          onClick={onClose}
+          alt="Cerrar"
+        />
         <h3 className="text-white text-center">Materias</h3>
-        <div className="container d-flex flex-column gap-3">
+        <div className={`container d-flex flex-column gap-3`}>
           <div className="row">
             <div className="col-12">
               <SearchBar onSearch={handleSearch} />

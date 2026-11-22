@@ -63,13 +63,18 @@ const Academic = () => {
               >
                 <h3 style={{ height: "10px", margin: "0" }}>UNIVERSITARIO</h3>
                 <hr></hr>
-                <div className="d-flex justify-content-between align-items-center gap-2">
-                  <h2>{academic.stD_TITLE}</h2>
-                  <b
-                    className={`px-2 py-1 rounded ${inCourse ? "bg-light text-dark" : "bg-secondary text-white"}`}
+                <div className="d-flex align-items-center justify-content-between gap-3">
+                  <h2 className="h4 mb-0">{academic.stD_TITLE}</h2>
+
+                  <span
+                    className={`badge flex-shrink-0 ${
+                      inCourse
+                        ? "bg-light text-dark border"
+                        : "bg-secondary text-white"
+                    }`}
                   >
                     {inCourse ? "En curso" : "Finalizado"}
-                  </b>
+                  </span>
                 </div>
                 <div className="d-flex">
                   <p>{academic.stD_INSTITUTION}</p>
